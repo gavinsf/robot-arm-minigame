@@ -1,13 +1,13 @@
 # robot-arm-minigame
 
-## Textures : 
+Textures : 
 
-## Landscape : 
+Landscape : 
 
-## Usse of splines / Path3D / custom fonts : 
+Use of splines / Path3D / custom fonts : 
 
-## Particle systems
+Particle systems
 
-## A building made of a set of MeshInstance3D, with brick textures :
+A building made of a set of MeshInstance3D, with brick textures :
 
-## Phsysics simulation to calculate a simple ball / box movement with gravity : Gavin
+Physics simulation to calculate a simple ball / box movement with gravity : Gavin

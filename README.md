@@ -1,13 +1,37 @@
 # robot-arm-minigame
 
-Textures : 
+A conveyor drops balls into a bin   
+Selecting a ball causes a robot arm to places them into a corresponding colour chute   
+Balls that touch other balls are grabbed in a chain, mutliplying the ball's score   
 
-Landscape : 
+## MVP Features
+Modeling:   
+- Ball   
+- Conveyor   
+- Bin   
 
-Use of splines / Path3D / custom fonts : 
+Gameplay:
+- Ball spawning and color property   
+- Ball selection   
+- Play area collision   
+- Chain ball w/ movement to chute via spline   
+- Chute despawn / points mechanic   
+- Score UI   
+- Game Finished UI
+- Main menu UI   
 
-Particle systems
+## Future features
+- Texturing:    
+	- Ball   
+	- Conveyor belt   
+	- Environment   
 
-A building made of a set of MeshInstance3D, with brick textures :
+- Varying play basin shapes   
+- Powerups / special balls   
 
-Physics simulation to calculate a simple ball / box movement with gravity : Gavin
+## Assignment
+Landscape :   
+Use of splines / Path3D / custom fonts :   
+Particle systems   
+A building made of a set of MeshInstance3D, with brick textures :   
+Physics simulation to calculate a simple ball / box movement with gravity : Gavin   

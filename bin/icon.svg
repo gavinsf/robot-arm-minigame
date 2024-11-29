@@ -3,15 +3,15 @@
   <desc>Source: openclipart.org/detail/209545</desc>
   <defs>
     <radialGradient gradientUnits="userSpaceOnUse" cx="386.243" cy="181.271" r="124.904" id="gradient-0">
-      <stop offset="0" style="stop-color: rgb(84.706% 84.706% 84.706%)"/>
+      <stop offset="0" style="stop-color: rgb(216, 213, 213);"/>
       <stop offset="1" style="stop-color: rgb(194, 100, 100);"/>
     </radialGradient>
     <radialGradient gradientUnits="userSpaceOnUse" cx="165.258" cy="215.22" r="125.545" id="gradient-1">
-      <stop offset="0" style="stop-color: rgb(84.706% 84.706% 84.706%)"/>
+      <stop offset="0" style="stop-color: rgb(217, 211, 211);"/>
       <stop offset="1" style="stop-color: rgb(75, 183, 44);"/>
     </radialGradient>
     <radialGradient gradientUnits="userSpaceOnUse" cx="290.803" cy="324.11" r="156.291" id="gradient-2">
-      <stop offset="0" style="stop-color: rgb(216, 216, 216);"/>
+      <stop offset="0" style="stop-color: rgb(218, 212, 212);"/>
       <stop offset="1" style="stop-color: rgb(44, 151, 212);"/>
     </radialGradient>
   </defs>

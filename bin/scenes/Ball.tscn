@@ -12,6 +12,7 @@ rings = 16
 radius = 0.15
 
 [node name="Ball" type="RigidBody3D"]
+mass = 20.0
 script = ExtResource("1_8lfo2")
 
 [node name="BallMeshInstance" type="MeshInstance3D" parent="."]

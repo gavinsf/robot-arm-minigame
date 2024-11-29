@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://gi6bukmewly0"]
+
+[ext_resource type="PackedScene" uid="uid://ej1it8n2i062" path="res://scenes/Conveyor.tscn" id="2_1vhe0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d41c8"]
+sky_top_color = Color(0.711549, 0.573196, 0.48627, 1)
+sky_horizon_color = Color(0.702966, 0.663619, 0.636359, 1)
+ground_bottom_color = Color(0.100316, 0.0812793, 0.0591645, 1)
+ground_horizon_color = Color(0.702966, 0.663619, 0.636359, 1)
+
+[sub_resource type="Sky" id="Sky_g8ctf"]
+sky_material = SubResource("ProceduralSkyMaterial_d41c8")
+
+[sub_resource type="Environment" id="Environment_1ejvd"]
+background_mode = 2
+sky = SubResource("Sky_g8ctf")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Root" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1ejvd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.5, 0.75, -0.433013, 0, 0.5, 0.866025, 0.866025, -0.433013, 0.25, 0, 0, 0)
+light_color = Color(1, 0.855333, 0.69, 1)
+shadow_enabled = true
+
+[node name="Enivronment" type="Node" parent="."]
+
+[node name="Geometery" type="Node" parent="."]
+
+[node name="Conveyor" parent="Geometery" instance=ExtResource("2_1vhe0")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.959097, 0.283078, 0, -0.283078, 0.959097, 4.76837e-07, 1.58584, 2.44339)
+fov = 90.0

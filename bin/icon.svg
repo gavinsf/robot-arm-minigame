@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg id="svg2" viewBox="0 0 500 670" xmlns="http://www.w3.org/2000/svg">
+  <desc>Source: openclipart.org/detail/209545</desc>
+  <defs>
+    <radialGradient gradientUnits="userSpaceOnUse" cx="386.243" cy="181.271" r="124.904" id="gradient-0">
+      <stop offset="0" style="stop-color: rgb(216, 213, 213);"/>
+      <stop offset="1" style="stop-color: rgb(194, 100, 100);"/>
+    </radialGradient>
+    <radialGradient gradientUnits="userSpaceOnUse" cx="165.258" cy="215.22" r="125.545" id="gradient-1">
+      <stop offset="0" style="stop-color: rgb(217, 211, 211);"/>
+      <stop offset="1" style="stop-color: rgb(75, 183, 44);"/>
+    </radialGradient>
+    <radialGradient gradientUnits="userSpaceOnUse" cx="290.803" cy="324.11" r="156.291" id="gradient-2">
+      <stop offset="0" style="stop-color: rgb(218, 212, 212);"/>
+      <stop offset="1" style="stop-color: rgb(44, 151, 212);"/>
+    </radialGradient>
+  </defs>
+  <ellipse style="stroke: rgba(0, 0, 0, 0); fill: url(&quot;#gradient-0&quot;);" cx="358.059" cy="229.952" rx="124.904" ry="124.904"/>
+  <ellipse style="stroke: rgba(0, 0, 0, 0); fill: url(&quot;#gradient-1&quot;);" cx="142.199" cy="272.868" rx="125.545" ry="125.545"/>
+  <ellipse style="fill: url(&quot;#gradient-2&quot;); stroke: rgba(0, 0, 0, 0);" cx="256.214" cy="388.164" rx="156.291" ry="156.291"/>
+</svg>

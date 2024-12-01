@@ -26,9 +26,9 @@ func _physics_process(delta: float) -> void:
 func on_spawn() -> void:
 	var _inst_ball = packed_ball.instantiate()
 	_inst_ball.unique_name_in_owner = true
-	var _colour = null
+	var _color = null
 	
-	while _colour == null:
+	while _color == null:
 		# Base case: empty markov chain, time for reset.
 		if (balls_markov_chain[0] == 0 &&
 		balls_markov_chain[1] == 0 &&
@@ -39,10 +39,10 @@ func on_spawn() -> void:
 		# Set from available markov result.
 		var _result = floor(randf() * 3)
 		if balls_markov_chain[_result] > 0: 
-			_colour = _result
+			_color = _result
 			balls_markov_chain[_result] -= 1
 	
-	_inst_ball.ball_colour = _colour
+	_inst_ball.ball_color = _color
 	_inst_ball.apply_impulse(Vector3(-ball_force,0,0))
 	
 	add_child(_inst_ball)

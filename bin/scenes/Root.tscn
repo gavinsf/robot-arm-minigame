@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://gi6bukmewly0"]
+[gd_scene load_steps=8 format=3 uid="uid://gi6bukmewly0"]
 
 [ext_resource type="PackedScene" uid="uid://ej1it8n2i062" path="res://scenes/Conveyor.tscn" id="2_1vhe0"]
+[ext_resource type="PackedScene" uid="uid://b82o7odsxb33f" path="res://models/inherited/magnet_arm.tscn" id="2_tsrx2"]
+[ext_resource type="Script" path="res://scripts/magnet_arm.gd" id="3_efdbg"]
+[ext_resource type="PackedScene" uid="uid://vdjdrf0d6c2e" path="res://scenes/PlayBin.tscn" id="4_0rby3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d41c8"]
 sky_top_color = Color(0.711549, 0.573196, 0.48627, 1)
@@ -33,6 +36,13 @@ shadow_enabled = true
 
 [node name="Conveyor" parent="Geometery" instance=ExtResource("2_1vhe0")]
 
+[node name="MagnetArm" parent="Geometery" instance=ExtResource("2_tsrx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78319, 2.38419e-07, 0.0594101)
+script = ExtResource("3_efdbg")
+
+[node name="PlayBin" parent="Geometery" instance=ExtResource("4_0rby3")]
+transform = Transform3D(1, 0, 0, 0, 0.95516, -0.296091, 0, 0.296091, 0.95516, -3.45292, -1.94949, 2.58832)
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.959097, 0.283078, 0, -0.283078, 0.959097, 4.76837e-07, 1.58584, 2.44339)
+transform = Transform3D(1, 0, 0, 0, 0.798551, 0.601926, 0, -0.601926, 0.798551, -3.62272, 2.82832, 6.45548)
 fov = 90.0

@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://vdjdrf0d6c2e"]
+
+[ext_resource type="Script" path="res://scripts/play_bin.gd" id="1_clo2q"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8mog2"]
+size = Vector2(3, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v5ves"]
+size = Vector3(3, 1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_du21f"]
+size = Vector3(0.1, 1, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gdhv1"]
+size = Vector3(0.1, 1, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aq202"]
+size = Vector3(3, 0.1, 6)
+
+[node name="PlayBin" type="StaticBody3D"]
+script = ExtResource("1_clo2q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_8mog2")
+
+[node name="CollisionBottom" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 3)
+shape = SubResource("BoxShape3D_v5ves")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+
+[node name="CollisionLeft" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 0)
+shape = SubResource("BoxShape3D_du21f")
+
+[node name="CollisionRight" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0)
+shape = SubResource("BoxShape3D_gdhv1")
+
+[node name="CollisionBase" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_aq202")

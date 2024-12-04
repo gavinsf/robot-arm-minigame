@@ -1,17 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://ej1it8n2i062"]
+[gd_scene load_steps=13 format=3 uid="uid://ej1it8n2i062"]
 
-[ext_resource type="Script" path="res://scripts/ball_factory.gd" id="1_lshtm"]
+[ext_resource type="Script" path="res://scripts/conveyor.gd" id="1_lshtm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_adq3a"]
-size = Vector3(4, 0.2, 1)
+size = Vector3(5, 0.2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wmn2w"]
-size = Vector3(4, 0.2, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vgy18"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_l63sm"]
-size = Vector3(4, 0.25, 0.25)
+size = Vector3(5, 0.2, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_18iep"]
 lightmap_size_hint = Vector2i(7, 8)
@@ -54,74 +49,66 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_y4u5i")
 
 [node name="Conveyor" type="StaticBody3D"]
+script = ExtResource("1_lshtm")
 
 [node name="BackChannel" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0.203529, -0.284171)
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0.344518, 0.203529, -0.284171)
 shape = SubResource("BoxShape3D_adq3a")
 
 [node name="FrontChannel" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0.203529, 0.284294)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.344518, 0.203529, 0.284294)
 shape = SubResource("BoxShape3D_wmn2w")
 
-[node name="Stopper" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11768, 0.52284, 0)
-shape = SubResource("BoxShape3D_vgy18")
+[node name="BallSpawnMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12869, 0.767887, -0.0171261)
 
-[node name="BallFactory" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34781, 0.365975, -0.0171261)
-script = ExtResource("1_lshtm")
+[node name="Geometry" type="Node3D" parent="."]
 
-[node name="PropellArea" type="CollisionShape3D" parent="BallFactory"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77777, -0.124859, 0.0188691)
-shape = SubResource("BoxShape3D_l63sm")
-
-[node name="Geometery" type="Node" parent="."]
-
-[node name="LeftCap" type="MeshInstance3D" parent="Geometery"]
+[node name="LeftCap" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2, 0, 0)
 mesh = SubResource("CylinderMesh_18iep")
 skeleton = NodePath("../..")
 
-[node name="RightCap" type="MeshInstance3D" parent="Geometery"]
+[node name="RightCap" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2, 0, 0)
 mesh = SubResource("CylinderMesh_6y04a")
 skeleton = NodePath("../..")
 
-[node name="TopBelt" type="MeshInstance3D" parent="Geometery"]
+[node name="TopBelt" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 mesh = SubResource("PlaneMesh_gp88a")
 skeleton = NodePath("../..")
 
-[node name="BottomBelt" type="MeshInstance3D" parent="Geometery"]
+[node name="BottomBelt" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
 mesh = SubResource("PlaneMesh_avh1u")
 skeleton = NodePath("../..")
 
-[node name="Edge0" type="MeshInstance3D" parent="Geometery"]
+[node name="Edge0" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.4, 0.25)
 mesh = SubResource("RibbonTrailMesh_fgviu")
 skeleton = NodePath("../..")
 
-[node name="Edge1" type="MeshInstance3D" parent="Geometery"]
+[node name="Edge1" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.4, -0.25)
 mesh = SubResource("RibbonTrailMesh_fgviu")
 skeleton = NodePath("../Edge0")
 
-[node name="Edge2" type="MeshInstance3D" parent="Geometery"]
+[node name="Edge2" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.4, 0.25)
 mesh = SubResource("RibbonTrailMesh_fgviu")
 skeleton = NodePath("../Edge1")
 
-[node name="Edge3" type="MeshInstance3D" parent="Geometery"]
+[node name="Edge3" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.4, -0.25)
 mesh = SubResource("RibbonTrailMesh_fgviu")
 skeleton = NodePath("../Edge2")
 
-[node name="Source" type="MeshInstance3D" parent="Geometery"]
+[node name="Source" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42568, 0.65577, -0.000283122)
 mesh = SubResource("BoxMesh_168mn")
 
-[node name="SourceDark" type="MeshInstance3D" parent="Geometery"]
+[node name="SourceDark" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(0.879396, 0, 0, 0, 0.76107, 0, 0, 0, 0.736778, 2.36394, 0.567866, -0.000283122)
 mesh = SubResource("BoxMesh_6x23l")
 skeleton = NodePath("../Source")

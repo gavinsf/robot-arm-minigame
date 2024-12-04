@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://vdjdrf0d6c2e"]
+[gd_scene load_steps=8 format=3 uid="uid://vdjdrf0d6c2e"]
 
 [ext_resource type="Script" path="res://scripts/play_bin.gd" id="1_clo2q"]
 
@@ -16,6 +16,9 @@ size = Vector3(0.1, 1, 6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aq202"]
 size = Vector3(3, 0.1, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lo6ye"]
+size = Vector3(3, 0.1, 5.5)
 
 [node name="PlayBin" type="StaticBody3D"]
 script = ExtResource("1_clo2q")
@@ -39,3 +42,7 @@ shape = SubResource("BoxShape3D_gdhv1")
 
 [node name="CollisionBase" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_aq202")
+
+[node name="CollisionCover" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443004, 0.248959)
+shape = SubResource("BoxShape3D_lo6ye")

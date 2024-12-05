@@ -10,8 +10,11 @@ radial_segments = 16
 rings = 16
 
 [sub_resource type="SphereMesh" id="SphereMesh_p708g"]
+material = ExtResource("2_11uhv")
 radius = 0.151
-height = 0.15
+height = 0.149
+radial_segments = 16
+rings = 16
 is_hemisphere = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i4vc7"]
@@ -22,13 +25,13 @@ radius = 0.35
 
 [node name="Ball" type="RigidBody3D"]
 mass = 20.0
+continuous_cd = true
 script = ExtResource("1_8lfo2")
 
 [node name="BallMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_q0ijr")
 
 [node name="ReflectiveSideMesh" type="MeshInstance3D" parent="."]
-material_override = ExtResource("2_11uhv")
 mesh = SubResource("SphereMesh_p708g")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
@@ -39,4 +42,4 @@ shape = SubResource("SphereShape3D_i4vc7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExpandedArea"]
 shape = SubResource("SphereShape3D_jknwj")
 
-[connection signal="input_event" from="ExpandedArea" to="." method="_on_click_area_input_event"]
+[connection signal="input_event" from="ExpandedArea" to="." method="_on_expanded_area_input_event"]

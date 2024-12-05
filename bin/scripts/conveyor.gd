@@ -12,6 +12,8 @@ var ball_direction : Vector3
 @onready var packed_ball = preload("res://scenes/Ball.tscn")
 @onready var ball_spawn_point = $BallSpawnMarker
 
+@export var score_label : ScoreLabel = null
+
 
 # VIRTUALS ###################################################################
 func _ready() -> void:
@@ -21,14 +23,12 @@ func _ready() -> void:
 	spawn_timer.start(spawn_rate)
 	# Shift ball impulse vector direction based on rotation.
 	ball_direction = Vector3(-1, 0, 0).rotated(Vector3.UP, global_rotation.y)
-	
 
 
 
 # HELPERS ####################################################################
 func on_spawn() -> void:
 	var _inst_ball : Ball = packed_ball.instantiate()
-	_inst_ball.unique_name_in_owner = true
 	var _color = null
 	
 	while _color == null:
@@ -50,5 +50,6 @@ func on_spawn() -> void:
 	_inst_ball.apply_impulse(ball_force * ball_direction)
 	
 	add_child(_inst_ball)
+	if score_label: _inst_ball.add_score.connect(score_label.add_score)
 	
 	spawn_timer.start(spawn_rate)

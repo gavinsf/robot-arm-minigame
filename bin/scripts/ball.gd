@@ -8,6 +8,7 @@ static var ball_colors : Array[Color]  = [Color(0.8, 0.4, 0.4), Color(0.4, 0.9, 
 var ball_color : int
 var chained = false
 
+signal add_score(score_amount)
 
 # VIRTUALS ###################################################################
 func _ready() -> void:
@@ -15,6 +16,7 @@ func _ready() -> void:
 	_ball_material.albedo_color = ball_colors[ball_color]
 	
 	ball_mesh.set_surface_override_material(0, _ball_material)
+	add_score.emit(10)
 
 
 
@@ -31,11 +33,18 @@ func get_similar_color_collisions() -> Array[Ball]:
 	
 	return _chain_array
 
-func _on_click_area_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
-	if event is InputEventMouseButton && event.pressed && event.button_index == 1:
-		score_point()
 
 func score_point():
-	for _ball in get_similar_color_collisions():
-			# Define what to go for each scored ball
-			_ball.queue_free()
+	var _chain : Array[Ball] = get_similar_color_collisions()
+	var _score = _chain.size() * 10
+	print(_score)
+	
+	for _ball in _chain:
+		# Define what to go for each scored ball
+		_ball.queue_free()
+		add_score.emit(_score)
+
+
+func _on_expanded_area_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event is InputEventMouseButton && event.pressed && event.button_index == 1:
+		score_point()

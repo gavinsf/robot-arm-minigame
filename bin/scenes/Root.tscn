@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://gi6bukmewly0"]
+[gd_scene load_steps=8 format=3 uid="uid://gi6bukmewly0"]
 
 [ext_resource type="PackedScene" uid="uid://ej1it8n2i062" path="res://scenes/Conveyor.tscn" id="2_1vhe0"]
 [ext_resource type="PackedScene" uid="uid://44556255anco" path="res://scenes/MagnetArm.tscn" id="3_r08op"]
 [ext_resource type="PackedScene" uid="uid://vdjdrf0d6c2e" path="res://scenes/PlayBin.tscn" id="4_0rby3"]
+[ext_resource type="Script" path="res://scripts/score_label.gd" id="4_2g7sn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d41c8"]
 sky_top_color = Color(0.711549, 0.573196, 0.48627, 1)
@@ -21,6 +22,21 @@ glow_enabled = true
 
 [node name="Root" type="Node3D"]
 
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Score:"
+script = ExtResource("4_2g7sn")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1ejvd")
 
@@ -33,16 +49,18 @@ shadow_enabled = true
 
 [node name="Geometry" type="Node" parent="."]
 
-[node name="Conveyor_1" parent="Geometry" instance=ExtResource("2_1vhe0")]
-
 [node name="PlayBin" parent="Geometry" instance=ExtResource("4_0rby3")]
 transform = Transform3D(1, 0, 0, 0, 0.95516, -0.296091, 0, 0.296091, 0.95516, -3.45292, -1.94949, 2.58832)
 
 [node name="MagnetArm" parent="Geometry" instance=ExtResource("3_r08op")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.28901, 0, -1.41577)
 
-[node name="Conveyor_2" parent="Geometry" instance=ExtResource("2_1vhe0")]
+[node name="Conveyor_1" parent="Geometry" node_paths=PackedStringArray("score_label") instance=ExtResource("2_1vhe0")]
+score_label = NodePath("../../UI/Score")
+
+[node name="Conveyor_2" parent="Geometry" node_paths=PackedStringArray("score_label") instance=ExtResource("2_1vhe0")]
 transform = Transform3D(-0.189061, 0, 0.981965, 0, 1, 0, -0.981965, 0, -0.189061, -4.55152, 0, -3.08961)
+score_label = NodePath("../../UI/Score")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.798551, 0.601926, 0, -0.601926, 0.798551, -3.62272, 2.82832, 6.45548)

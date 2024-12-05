@@ -9,8 +9,6 @@ operator = 2
 
 [sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_htd0o"]
 parameter_name = "panning_speed"
-default_value_enabled = true
-default_value = Vector2(0, 2)
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_u1ijj"]
 output_port_for_preview = 0
@@ -59,7 +57,7 @@ code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded, shadows_disabled;
 
 uniform vec4 LightningColor : source_color;
-uniform vec2 panning_speed = vec2(0.000000, 2.000000);
+uniform vec2 panning_speed;
 uniform sampler2D tex_frg_4 : source_color;
 uniform sampler2D tex_frg_6 : source_color;
 

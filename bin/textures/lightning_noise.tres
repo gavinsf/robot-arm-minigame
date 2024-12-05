@@ -2,6 +2,6 @@
 
 [resource]
 noise_type = 2
-frequency = 0.006
+frequency = 0.0128
 fractal_gain = 0.13
 domain_warp_amplitude = -0.915

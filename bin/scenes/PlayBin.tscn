@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://vdjdrf0d6c2e"]
+[gd_scene load_steps=9 format=3 uid="uid://vdjdrf0d6c2e"]
 
 [ext_resource type="Script" path="res://scripts/play_bin.gd" id="1_clo2q"]
 
@@ -20,11 +20,8 @@ size = Vector2(3, 6)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lo6ye"]
 size = Vector3(3, 0.1, 5.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7jtm5"]
-size = Vector3(3, 0.75, 0.1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_x4wla"]
-size = Vector3(3, 0.5, 1)
+size = Vector3(3, 0.181641, 1)
 
 [node name="PlayBin" type="StaticBody3D"]
 script = ExtResource("1_clo2q")
@@ -49,18 +46,14 @@ shape = SubResource("BoxShape3D_aq202")
 mesh = SubResource("PlaneMesh_8mog2")
 
 [node name="CollisionCover" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.999841, 0, -0.0178538, 0, 1, 0, 0.0178538, 0, 0.999841, 0, 0.443004, 0.248959)
+transform = Transform3D(0.999841, 0, -0.0178538, 0, 1, 0, 0.0178538, 0, 0.999841, 0.00244784, 0.443004, 0.246574)
 shape = SubResource("BoxShape3D_lo6ye")
-
-[node name="CollisionFunnel" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.986481, 0.163877, 0, -0.163877, 0.986481, 0, 0.856311, -2.53016)
-shape = SubResource("BoxShape3D_7jtm5")
 
 [node name="AlignmentArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.671517, -3.1848)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AlignmentArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.176503, 0)
+transform = Transform3D(1, 0, 0, 0, 0.724677, 0.689089, 0, -0.689089, 0.724677, 0, 0.926142, -0.321425)
 shape = SubResource("BoxShape3D_x4wla")
 
 [node name="AlignmentMarkers" type="Node3D" parent="."]

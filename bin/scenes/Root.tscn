@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://gi6bukmewly0"]
+[gd_scene load_steps=10 format=3 uid="uid://gi6bukmewly0"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_bnnad"]
 [ext_resource type="PackedScene" uid="uid://ej1it8n2i062" path="res://scenes/Conveyor.tscn" id="2_1vhe0"]
 [ext_resource type="PackedScene" uid="uid://44556255anco" path="res://scenes/MagnetArm.tscn" id="3_r08op"]
 [ext_resource type="PackedScene" uid="uid://vdjdrf0d6c2e" path="res://scenes/PlayBin.tscn" id="4_0rby3"]
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="4_2g7sn"]
+[ext_resource type="Script" path="res://scripts/chute_controller.gd" id="6_ubdar"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d41c8"]
 sky_top_color = Color(0.711549, 0.573196, 0.48627, 1)
@@ -40,20 +41,24 @@ offset_bottom = 23.0
 text = "Score:"
 script = ExtResource("4_2g7sn")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1ejvd")
+[node name="Enivronment" type="Node" parent="."]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enivronment"]
 transform = Transform3D(0.5, 0.75, -0.433013, 0, 0.5, 0.866025, 0.866025, -0.433013, 0.25, 0, 0, 0)
 light_color = Color(1, 0.855333, 0.69, 1)
 shadow_enabled = true
 
-[node name="Enivronment" type="Node" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Enivronment"]
+environment = SubResource("Environment_1ejvd")
+
+[node name="Camera3D" type="Camera3D" parent="Enivronment"]
+transform = Transform3D(1, 0, 0, 0, 0.444276, 0.89589, 0, -0.89589, 0.444276, -0.473504, 5.47383, 5.53137)
+fov = 60.0
 
 [node name="Geometry" type="Node" parent="."]
 
 [node name="MagnetArm" parent="Geometry" instance=ExtResource("3_r08op")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22591, -0.793973, 1.08426)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22591, -0.793973, -0.767562)
 
 [node name="PlayBin" parent="Geometry" instance=ExtResource("4_0rby3")]
 transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -1.949, 2.588)
@@ -62,26 +67,26 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2.6, 0, -2.3)
 node_score_label = NodePath("../../UI/Score")
 node_magnet_arm = NodePath("../MagnetArm")
-node_camera = NodePath("../../Camera3D")
+node_camera = NodePath("../../Enivronment/Camera3D")
 
 [node name="Conveyor_3" parent="Geometry" node_paths=PackedStringArray("node_score_label", "node_magnet_arm", "node_camera") instance=ExtResource("2_1vhe0")]
 transform = Transform3D(0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, 0.34202, 1.2, 0, -3.2)
 node_score_label = NodePath("../../UI/Score")
 node_magnet_arm = NodePath("../MagnetArm")
-node_camera = NodePath("../../Camera3D")
+node_camera = NodePath("../../Enivronment/Camera3D")
 
 [node name="Conveyor_2" parent="Geometry" node_paths=PackedStringArray("node_score_label", "node_magnet_arm", "node_camera") instance=ExtResource("2_1vhe0")]
 transform = Transform3D(-0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, -0.34202, -1.2, 0, -3.2)
 node_score_label = NodePath("../../UI/Score")
 node_magnet_arm = NodePath("../MagnetArm")
-node_camera = NodePath("../../Camera3D")
+node_camera = NodePath("../../Enivronment/Camera3D")
 
 [node name="Conveyor_1" parent="Geometry" node_paths=PackedStringArray("node_score_label", "node_magnet_arm", "node_camera") instance=ExtResource("2_1vhe0")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -2.6, 0, -2.3)
 node_score_label = NodePath("../../UI/Score")
 node_magnet_arm = NodePath("../MagnetArm")
-node_camera = NodePath("../../Camera3D")
+node_camera = NodePath("../../Enivronment/Camera3D")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.444276, 0.89589, 0, -0.89589, 0.444276, 0, 5.47167, 5.52462)
-fov = 60.0
+[node name="ChuteController" type="Node3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9206, -0.968746, 1.58873)
+script = ExtResource("6_ubdar")

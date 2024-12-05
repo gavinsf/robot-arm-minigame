@@ -1,8 +1,7 @@
-[gd_scene load_steps=27 format=4 uid="uid://44556255anco"]
+[gd_scene load_steps=21 format=4 uid="uid://44556255anco"]
 
 [ext_resource type="Texture2D" uid="uid://l5tk8n46tep0" path="res://models/blender/magnet_arm/textures/magnet_red.png" id="1_1pg4v"]
 [ext_resource type="Script" path="res://scripts/magnet_arm.gd" id="1_r8uk5"]
-[ext_resource type="Shader" uid="uid://clsxqqmxudpws" path="res://shaders/lighting_shader.tres" id="3_nadah"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewf8g"]
 resource_name = "magnet_red"
@@ -278,72 +277,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hoewp")
 
-[sub_resource type="Animation" id="Animation_4y1sf"]
-resource_name = "Bone_BaseAction"
-length = 0.0416667
-tracks/0/type = "rotation_3d"
-tracks/0/imported = true
-tracks/0/enabled = true
-tracks/0/path = NodePath("Armature/Skeleton3D:Bone_Arm")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.278995, 1.14476e-07, 3.32588e-08, 0.960293)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = true
-tracks/1/enabled = true
-tracks/1/path = NodePath("Armature/Skeleton3D:Bone_Gimble")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.660252, -8.95314e-08, -7.87081e-08, 0.751044)
-tracks/2/type = "rotation_3d"
-tracks/2/imported = true
-tracks/2/enabled = true
-tracks/2/path = NodePath("Armature/Skeleton3D:Bone_Magnet")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, -0.34097, 9.13135e-15, 1.87682e-15, 0.940074)
-
-[sub_resource type="Animation" id="Animation_kfnvp"]
-resource_name = "look_down"
-length = 0.416667
-tracks/0/type = "rotation_3d"
-tracks/0/imported = true
-tracks/0/enabled = true
-tracks/0/path = NodePath("Armature/Skeleton3D:Bone_Arm")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.278995, 1.14476e-07, 3.32588e-08, 0.960293, 0.0333333, 1, 0.278995, 1.14476e-07, 3.32588e-08, 0.960293, 0.0666667, 1, 0.280405, 1.14524e-07, 3.30907e-08, 0.959882, 0.1, 1, 0.283894, 1.14644e-07, 3.2674e-08, 0.958856, 0.133333, 1, 0.28959, 1.14836e-07, 3.19917e-08, 0.957151, 0.166667, 1, 0.297083, 1.15084e-07, 3.10907e-08, 0.954852, 0.2, 1, 0.306162, 1.15374e-07, 2.99935e-08, 0.95198, 0.233333, 1, 0.315813, 1.15673e-07, 2.88203e-08, 0.948822, 0.266667, 1, 0.325631, 1.15966e-07, 2.76198e-08, 0.945497, 0.3, 1, 0.335215, 1.1624e-07, 2.64408e-08, 0.942142, 0.333333, 1, 0.344171, 1.16486e-07, 2.53327e-08, 0.938907, 0.366667, 1, 0.351519, 1.16681e-07, 2.4419e-08, 0.936181, 0.4, 1, 0.35708, 1.16825e-07, 2.37247e-08, 0.934074, 0.416667, 1, 0.359561, 1.16887e-07, 2.34142e-08, 0.933122)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = true
-tracks/1/enabled = true
-tracks/1/path = NodePath("Armature/Skeleton3D:Bone_Gimble")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.660252, -8.95315e-08, -7.87081e-08, 0.751044, 0.0333333, 1, -0.660252, -8.95315e-08, -7.87081e-08, 0.751044, 0.0666667, 1, -0.663322, -8.92084e-08, -7.90741e-08, 0.748334, 0.1, 1, -0.670891, -8.84003e-08, -7.99764e-08, 0.741556, 0.133333, 1, -0.683142, -8.70568e-08, -8.14368e-08, 0.730286, 0.166667, 1, -0.69904, -8.52445e-08, -8.33321e-08, 0.715082, 0.2, 1, -0.717968, -8.29788e-08, -8.55884e-08, 0.696077, 0.233333, 1, -0.737615, -8.04927e-08, -8.79305e-08, 0.675222, 0.266667, 1, -0.757056, -7.78855e-08, -9.02481e-08, 0.65335, 0.3, 1, -0.775463, -7.52679e-08, -9.24424e-08, 0.631393, 0.333333, 1, -0.792118, -7.27615e-08, -9.44278e-08, 0.610368, 0.366667, 1, -0.805353, -7.06668e-08, -9.60055e-08, 0.592796, 0.4, 1, -0.815108, -6.9059e-08, -9.71685e-08, 0.579308, 0.416667, 1, -0.819391, -6.8335e-08, -9.7679e-08, 0.573235)
-tracks/2/type = "rotation_3d"
-tracks/2/imported = true
-tracks/2/enabled = true
-tracks/2/path = NodePath("Armature/Skeleton3D:Bone_Magnet")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, -0.34097, 9.13135e-15, 1.87682e-15, 0.940074, 0.0333333, 1, -0.34097, 9.13135e-15, 1.87682e-15, 0.940074, 0.0666667, 1, -0.350226, 9.08608e-15, 1.95282e-15, 0.936665, 0.1, 1, -0.373302, 9.01811e-15, 2.21185e-15, 0.92771, 0.133333, 1, -0.411053, 8.9299e-15, 2.64494e-15, 0.911611, 0.166667, 1, -0.460642, 8.8062e-15, 3.12685e-15, 0.887586, 0.2, 1, -0.520557, 8.07658e-15, 3.21741e-15, 0.853827, 0.233333, 1, -0.58249, 8.38604e-15, 3.99883e-15, 0.812838, 0.266667, 1, -0.642616, 8.63522e-15, 4.66265e-15, 0.766189, 0.3, 1, -0.697708, 8.29565e-15, 5.25664e-15, 0.716382, 0.333333, 1, -0.745295, 7.41339e-15, 6.68601e-15, 0.666735, 0.366667, 1, -0.780888, 6.37521e-15, 4.83822e-15, 0.624671, 0.4, 1, -0.805862, 6.24251e-15, 5.45744e-15, 0.592104, 0.416667, 1, -0.816491, 6.32659e-15, 6.17768e-15, 0.577359)
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_j3l8c"]
-_data = {
-"Bone_BaseAction": SubResource("Animation_4y1sf"),
-"look_down": SubResource("Animation_kfnvp")
-}
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2fbkd"]
-render_priority = 0
-shader = ExtResource("3_nadah")
-shader_parameter/LightningColor = Color(0.1596, 0.71526, 0.84, 1)
-shader_parameter/panning_speed = Vector2(0, 0.2)
-
-[sub_resource type="QuadMesh" id="QuadMesh_epsq5"]
-material = SubResource("ShaderMaterial_2fbkd")
-size = Vector2(0.2, 0.2)
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_ajf7i"]
 height = 6.0
 radial_segments = 16
@@ -352,6 +285,7 @@ radial_segments = 16
 script = ExtResource("1_r8uk5")
 
 [node name="Armature" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0106578, -0.210912, -0.0372164)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Armature"]
 bones/0/name = "Bone_Base"
@@ -373,7 +307,7 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(1, 2.36453e-07, -3.05498e-08, 2.84217e-14, 0.128135, 0.991757, 2.38419e-07, -0.991757, 0.128135, 7.10543e-15, 1.57114, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(7.10543e-15, 1.57114, 0)
-bones/2/rotation = Quaternion(-0.660252, -8.95314e-08, -7.87081e-08, 0.751044)
+bones/2/rotation = Quaternion(-0.660252, -8.95315e-08, -7.87081e-08, 0.751044)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Bone_Magnet"
 bones/3/parent = 2
@@ -433,7 +367,7 @@ bones/10/rotation = Quaternion(0, 0, 0, 1)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="Magnet" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(1, 2.14722e-13, -3.91132e-13, 2.25677e-13, -0.999998, -0.00191504, -3.79208e-13, 0.00191504, -0.999998, 0.0376951, 2.80587, -0.65676)
+transform = Transform3D(1, 2.32685e-13, -1.90964e-13, 2.25677e-13, -0.999998, -0.00191492, -1.94466e-13, 0.00191492, -0.999998, 0.0376951, 2.80587, -0.65676)
 bone_name = "Magnet"
 bone_idx = 4
 
@@ -442,7 +376,7 @@ mesh = SubResource("ArrayMesh_11slp")
 skeleton = NodePath("")
 
 [node name="Hinge_Magnet" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(1.80188e-13, 1, 2.4999e-08, -0.842106, -5.6624e-11, 1.76858e-06, 1.76847e-06, -2.96862e-08, 0.842105, 0, 2.80562, -0.354392)
+transform = Transform3D(1.95638e-13, 1, 2.49988e-08, -0.842106, -5.66204e-11, 1.66812e-06, 1.66812e-06, -2.9686e-08, 0.842105, 0, 2.80562, -0.354392)
 bone_name = "Hinge_Magnet"
 bone_idx = 5
 
@@ -451,7 +385,7 @@ mesh = SubResource("ArrayMesh_8fi7a")
 skeleton = NodePath("")
 
 [node name="Gimble" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(1, -4.40536e-13, 6.75015e-14, 2.41585e-13, 0.639603, 0.768705, -3.69482e-13, -0.768705, 0.639603, -2.29331e-13, 2.34179, 0.193449)
+transform = Transform3D(1, -2.98428e-13, -7.4607e-14, 2.41585e-13, 0.639603, 0.768705, -1.84741e-13, -0.768705, 0.639603, -9.81931e-14, 2.34179, 0.193449)
 bone_name = "Gimble"
 bone_idx = 6
 
@@ -460,7 +394,7 @@ mesh = SubResource("ArrayMesh_56r0t")
 skeleton = NodePath("")
 
 [node name="Hinge_Gimble" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(-1.19209e-07, 1, -2.98019e-08, -1, -9.91556e-08, 7.15256e-07, 7.7486e-07, 7.25748e-08, 1, 1.36551e-13, 1.81394, 0.833911)
+transform = Transform3D(-1.19209e-07, 1, -2.98021e-08, -1, -9.91556e-08, 6.55651e-07, 6.85453e-07, 7.25749e-08, 1, 1.49196e-13, 1.81393, 0.833911)
 bone_name = "Hinge_Gimble"
 bone_idx = 7
 
@@ -469,7 +403,7 @@ mesh = SubResource("ArrayMesh_5y33t")
 skeleton = NodePath("")
 
 [node name="Arm" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(1, 7.23865e-14, -1.42109e-14, -5.68434e-14, 0.858855, -0.512219, -2.84217e-14, 0.512219, 0.858855, 7.25019e-14, 1.12886, 0.410973)
+transform = Transform3D(1, 7.9492e-14, -1.42109e-14, -7.10543e-14, 0.858855, -0.512219, -5.68434e-14, 0.512219, 0.858855, 7.79516e-14, 1.12886, 0.410973)
 bone_name = "Arm"
 bone_idx = 8
 
@@ -478,7 +412,7 @@ mesh = SubResource("ArrayMesh_0qtde")
 skeleton = NodePath("")
 
 [node name="Hinge_Arm" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(7.22866e-08, 1, 3.0165e-14, -1.21277, 5.11917e-08, 1.37091e-06, 1.37091e-06, 3.05306e-08, 1.21277, 1.77636e-14, 0.488043, -0.000498891)
+transform = Transform3D(7.22866e-08, 1, 3.45789e-14, -1.21277, 5.11916e-08, 1.3113e-06, 1.3113e-06, 3.05306e-08, 1.21277, 1.78052e-14, 0.488043, -0.000498891)
 bone_name = "Hinge_Arm"
 bone_idx = 9
 
@@ -495,15 +429,6 @@ bone_idx = 10
 mesh = SubResource("ArrayMesh_ofam7")
 skeleton = NodePath("")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_j3l8c")
-}
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.798636, 0.601815, 0, -0.601815, 0.798636, 0, 0, 0.302338)
-mesh = SubResource("QuadMesh_epsq5")
-
 [node name="Base" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.00425, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.96989, 0)
 mesh = SubResource("CylinderMesh_ajf7i")

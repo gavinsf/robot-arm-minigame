@@ -6,14 +6,15 @@ extends Node3D
 # MEMBERS ####################################################################
 var balls_markov_chain : Array[int] = [3,3,3]
 var spawn_timer = Timer.new()
-var spawn_rate = 0.3
-var ball_force = 5.0
+var spawn_rate = 0.75
+var ball_force = 2.0
 var ball_direction : Vector3
 @onready var packed_ball = preload("res://scenes/Ball.tscn")
 @onready var ball_spawn_point = $BallSpawnMarker
 
 @export var node_score_label : ScoreLabel = null
 @export var node_magnet_arm : Node3D = null
+@export var node_camera : Camera3D = null
 
 var impulsed_balls : Array[Ball] = [null]
 
@@ -23,7 +24,7 @@ func _ready() -> void:
 	# Manage timer.
 	add_child(spawn_timer)
 	spawn_timer.timeout.connect(on_spawn)
-	spawn_timer.start(spawn_rate)
+	spawn_timer.start(spawn_rate + randf()*2)
 	# Shift ball impulse vector direction based on rotation.
 	ball_direction = Vector3(-1, 0, 0).rotated(Vector3.UP, global_rotation.y)
 
@@ -54,11 +55,13 @@ func on_spawn() -> void:
 	
 	_inst_ball.ball_color = _color
 	_inst_ball.transform.origin = ball_spawn_point.transform.origin
+	if node_score_label is ScoreLabel: _inst_ball.add_score.connect(node_score_label.add_score)
+	if node_camera is Camera3D: _inst_ball.current_camera = node_camera
+	
 	
 	add_child(_inst_ball)
 	impulsed_balls.append(_inst_ball)
 	
-	if node_score_label is ScoreLabel: _inst_ball.add_score.connect(node_score_label.add_score)
 	
 	spawn_timer.start(spawn_rate)
 

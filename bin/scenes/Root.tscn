@@ -56,28 +56,32 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22591, -0.793973, 1.08426)
 
 [node name="PlayBin" parent="Geometry" instance=ExtResource("4_0rby3")]
-transform = Transform3D(1, 0, 0, 0, 0.95516, -0.296091, 0, 0.296091, 0.95516, 0, -1.949, 2.588)
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -1.949, 2.588)
 
-[node name="Conveyor_4" parent="Geometry" node_paths=PackedStringArray("node_score_label", "node_magnet_arm") instance=ExtResource("2_1vhe0")]
+[node name="Conveyor_4" parent="Geometry" node_paths=PackedStringArray("node_score_label", "node_magnet_arm", "node_camera") instance=ExtResource("2_1vhe0")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2.6, 0, -2.3)
 node_score_label = NodePath("../../UI/Score")
 node_magnet_arm = NodePath("../MagnetArm")
+node_camera = NodePath("../../Camera3D")
 
-[node name="Conveyor_3" parent="Geometry" node_paths=PackedStringArray("node_score_label", "node_magnet_arm") instance=ExtResource("2_1vhe0")]
+[node name="Conveyor_3" parent="Geometry" node_paths=PackedStringArray("node_score_label", "node_magnet_arm", "node_camera") instance=ExtResource("2_1vhe0")]
 transform = Transform3D(0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, 0.34202, 1.2, 0, -3.2)
 node_score_label = NodePath("../../UI/Score")
 node_magnet_arm = NodePath("../MagnetArm")
+node_camera = NodePath("../../Camera3D")
 
-[node name="Conveyor_2" parent="Geometry" node_paths=PackedStringArray("node_score_label", "node_magnet_arm") instance=ExtResource("2_1vhe0")]
+[node name="Conveyor_2" parent="Geometry" node_paths=PackedStringArray("node_score_label", "node_magnet_arm", "node_camera") instance=ExtResource("2_1vhe0")]
 transform = Transform3D(-0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, -0.34202, -1.2, 0, -3.2)
 node_score_label = NodePath("../../UI/Score")
 node_magnet_arm = NodePath("../MagnetArm")
+node_camera = NodePath("../../Camera3D")
 
-[node name="Conveyor_1" parent="Geometry" node_paths=PackedStringArray("node_score_label", "node_magnet_arm") instance=ExtResource("2_1vhe0")]
+[node name="Conveyor_1" parent="Geometry" node_paths=PackedStringArray("node_score_label", "node_magnet_arm", "node_camera") instance=ExtResource("2_1vhe0")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -2.6, 0, -2.3)
 node_score_label = NodePath("../../UI/Score")
 node_magnet_arm = NodePath("../MagnetArm")
+node_camera = NodePath("../../Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.798551, 0.601926, 0, -0.601926, 0.798551, 0, 2.828, 6.455)
-fov = 90.0
+transform = Transform3D(1, 0, 0, 0, 0.444276, 0.89589, 0, -0.89589, 0.444276, 0, 5.47167, 5.52462)
+fov = 60.0

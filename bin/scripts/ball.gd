@@ -10,14 +10,13 @@ var chained = false
 
 signal add_score(score_amount)
 
+
+
 # VIRTUALS ###################################################################
 func _ready() -> void:
 	var _ball_material = StandardMaterial3D.new()
 	_ball_material.albedo_color = ball_colors[ball_color]
-	
 	ball_mesh.set_surface_override_material(0, _ball_material)
-	add_score.emit(10)
-
 
 
 
@@ -28,23 +27,30 @@ func get_similar_color_collisions() -> Array[Ball]:
 	chained = true
 	
 	for _body in expanded_area.get_overlapping_bodies():
-		if _body is Ball && !_body.chained && _body.ball_color == ball_color:
+		if (
+			_body is Ball
+			&& !_body.chained
+			&& _body.ball_color == ball_color
+			):
 			_chain_array.append_array(_body.get_similar_color_collisions())
 	
 	return _chain_array
 
-
-func score_point():
+func score_point() -> void:
 	var _chain : Array[Ball] = get_similar_color_collisions()
 	var _score = _chain.size() * 10
-	print(_score)
 	
 	for _ball in _chain:
 		# Define what to go for each scored ball
 		_ball.queue_free()
 		add_score.emit(_score)
 
-
-func _on_expanded_area_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+func _on_expanded_area_input_event(
+		camera: Node, 
+		event: InputEvent, 
+		event_position: Vector3, 
+		normal: Vector3, 
+		shape_idx: int
+		) -> void:
 	if event is InputEventMouseButton && event.pressed && event.button_index == 1:
 		score_point()

@@ -44,5 +44,5 @@ shape = SubResource("BoxShape3D_gdhv1")
 shape = SubResource("BoxShape3D_aq202")
 
 [node name="CollisionCover" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443004, 0.248959)
+transform = Transform3D(0.999841, 0, -0.0178538, 0, 1, 0, 0.0178538, 0, 0.999841, 0, 0.443004, 0.248959)
 shape = SubResource("BoxShape3D_lo6ye")

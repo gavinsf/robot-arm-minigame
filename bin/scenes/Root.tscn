@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://gi6bukmewly0"]
+[gd_scene load_steps=9 format=3 uid="uid://gi6bukmewly0"]
 
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_bnnad"]
 [ext_resource type="PackedScene" uid="uid://ej1it8n2i062" path="res://scenes/Conveyor.tscn" id="2_1vhe0"]
 [ext_resource type="PackedScene" uid="uid://44556255anco" path="res://scenes/MagnetArm.tscn" id="3_r08op"]
 [ext_resource type="PackedScene" uid="uid://vdjdrf0d6c2e" path="res://scenes/PlayBin.tscn" id="4_0rby3"]
@@ -29,6 +30,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_bnnad")
 
 [node name="Score" type="Label" parent="UI"]
 layout_mode = 0

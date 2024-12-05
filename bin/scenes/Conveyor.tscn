@@ -60,7 +60,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 shape = SubResource("BoxShape3D_wmn2w")
 
 [node name="BallSpawnMarker" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12869, 0.767887, -0.0171261)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12869, 0.223275, -0.0171261)
 
 [node name="Geometry" type="Node3D" parent="."]
 

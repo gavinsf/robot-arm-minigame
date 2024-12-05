@@ -29,6 +29,7 @@ func _ready() -> void:
 # HELPERS ####################################################################
 func on_spawn() -> void:
 	var _inst_ball : Ball = packed_ball.instantiate()
+	_inst_ball.unique_name_in_owner = true
 	var _color = null
 	
 	while _color == null:
@@ -50,6 +51,6 @@ func on_spawn() -> void:
 	_inst_ball.apply_impulse(ball_force * ball_direction)
 	
 	add_child(_inst_ball)
-	if score_label: _inst_ball.add_score.connect(score_label.add_score)
+	if score_label is ScoreLabel: _inst_ball.add_score.connect(score_label.add_score)
 	
 	spawn_timer.start(spawn_rate)

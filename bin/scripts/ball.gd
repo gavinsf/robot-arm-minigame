@@ -2,7 +2,7 @@ extends RigidBody3D
 class_name Ball
 ## Rolls down the play area. Can be clicked, chaining to score same colour balls
 
-@onready var ball_mesh : MeshInstance3D = $BallMeshInstance
+@onready var ball_mesh : MeshInstance3D = $BallMesh
 @onready var expanded_area : Area3D = $ExpandedArea
 static var ball_colors : Array[Color]  = [Color(0.8, 0.4, 0.4), Color(0.4, 0.9, 0.4), Color(0.4, 0.6, 0.9)] # red, green, blue
 var ball_color : int

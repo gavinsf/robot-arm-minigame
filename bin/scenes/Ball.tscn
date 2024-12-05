@@ -1,12 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://3tn04ef0x7oc"]
+[gd_scene load_steps=7 format=3 uid="uid://3tn04ef0x7oc"]
 
 [ext_resource type="Script" path="res://scripts/ball.gd" id="1_8lfo2"]
+[ext_resource type="Material" uid="uid://c16wgdao087gh" path="res://materials/ball_reflective.tres" id="2_11uhv"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_q0ijr"]
 radius = 0.15
 height = 0.3
 radial_segments = 16
 rings = 16
+
+[sub_resource type="SphereMesh" id="SphereMesh_p708g"]
+radius = 0.151
+height = 0.15
+is_hemisphere = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i4vc7"]
 radius = 0.15
@@ -18,8 +24,12 @@ radius = 0.35
 mass = 20.0
 script = ExtResource("1_8lfo2")
 
-[node name="BallMeshInstance" type="MeshInstance3D" parent="."]
+[node name="BallMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_q0ijr")
+
+[node name="ReflectiveSideMesh" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_11uhv")
+mesh = SubResource("SphereMesh_p708g")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_i4vc7")

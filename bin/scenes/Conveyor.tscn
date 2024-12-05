@@ -14,15 +14,12 @@ top_radius = 0.15
 bottom_radius = 0.15
 height = 0.5
 radial_segments = 16
-cap_bottom = false
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_6y04a"]
 top_radius = 0.15
 bottom_radius = 0.15
 height = 0.5
 radial_segments = 16
-cap_top = false
-cap_bottom = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gp88a"]
 size = Vector2(4, 0.5)
@@ -30,15 +27,8 @@ size = Vector2(4, 0.5)
 [sub_resource type="PlaneMesh" id="PlaneMesh_avh1u"]
 size = Vector2(4, 0.5)
 
-[sub_resource type="Curve" id="Curve_piqw6"]
-_data = [Vector2(0, 0.252747), 0.0, 11.5, 0, 0, Vector2(0.032967, 0.648352), 0.709677, 0.709677, 0, 0, Vector2(0.242, 0.35), 0.0, 0.0, 0, 0, Vector2(1, 0.35), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_fgviu"]
-shape = 0
-size = 0.5
-sections = 16
-curve = SubResource("Curve_piqw6")
+[sub_resource type="BoxMesh" id="BoxMesh_gmsoh"]
+size = Vector3(0.1, 6, 0.4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_168mn"]
 
@@ -47,6 +37,9 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6x23l"]
 material = SubResource("StandardMaterial3D_y4u5i")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_njphe"]
+size = Vector3(5, 0.5, 0.5)
 
 [node name="Conveyor" type="StaticBody3D"]
 script = ExtResource("1_lshtm")
@@ -84,25 +77,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
 mesh = SubResource("PlaneMesh_avh1u")
 skeleton = NodePath("../..")
 
-[node name="Edge0" type="MeshInstance3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.4, 0.25)
-mesh = SubResource("RibbonTrailMesh_fgviu")
+[node name="EdgeFront" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -3, 0)
+mesh = SubResource("BoxMesh_gmsoh")
 skeleton = NodePath("../..")
 
-[node name="Edge1" type="MeshInstance3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.4, -0.25)
-mesh = SubResource("RibbonTrailMesh_fgviu")
-skeleton = NodePath("../Edge0")
-
-[node name="Edge2" type="MeshInstance3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.4, 0.25)
-mesh = SubResource("RibbonTrailMesh_fgviu")
-skeleton = NodePath("../Edge1")
-
-[node name="Edge3" type="MeshInstance3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.4, -0.25)
-mesh = SubResource("RibbonTrailMesh_fgviu")
-skeleton = NodePath("../Edge2")
+[node name="EdgeBack" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3, 0)
+mesh = SubResource("BoxMesh_gmsoh")
 
 [node name="Source" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42568, 0.65577, -0.000283122)
@@ -112,3 +94,11 @@ mesh = SubResource("BoxMesh_168mn")
 transform = Transform3D(0.879396, 0, 0, 0, 0.76107, 0, 0, 0, 0.736778, 2.36394, 0.567866, -0.000283122)
 mesh = SubResource("BoxMesh_6x23l")
 skeleton = NodePath("../Source")
+
+[node name="ImpulseArea" type="Area3D" parent="."]
+
+[node name="ColliderImpulseArea" type="CollisionShape3D" parent="ImpulseArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.323988, 0.361288, 0)
+shape = SubResource("BoxShape3D_njphe")
+
+[connection signal="body_exited" from="ImpulseArea" to="." method="_on_impulse_area_body_exited"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=4 uid="uid://44556255anco"]
+[gd_scene load_steps=27 format=4 uid="uid://44556255anco"]
 
 [ext_resource type="Texture2D" uid="uid://l5tk8n46tep0" path="res://models/blender/magnet_arm/textures/magnet_red.png" id="1_1pg4v"]
 [ext_resource type="Script" path="res://scripts/magnet_arm.gd" id="1_r8uk5"]
+[ext_resource type="Shader" uid="uid://clsxqqmxudpws" path="res://shaders/lighting_shader.tres" id="3_nadah"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewf8g"]
 resource_name = "magnet_red"
@@ -333,6 +334,20 @@ _data = {
 "look_down": SubResource("Animation_kfnvp")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2fbkd"]
+render_priority = 0
+shader = ExtResource("3_nadah")
+shader_parameter/LightningColor = Color(0.1596, 0.71526, 0.84, 1)
+shader_parameter/panning_speed = Vector2(0, 0.2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_epsq5"]
+material = SubResource("ShaderMaterial_2fbkd")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ajf7i"]
+height = 6.0
+radial_segments = 16
+
 [node name="MagnetArm" type="Node3D"]
 script = ExtResource("1_r8uk5")
 
@@ -484,3 +499,11 @@ skeleton = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_j3l8c")
 }
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.798636, 0.601815, 0, -0.601815, 0.798636, 0, 0, 0.302338)
+mesh = SubResource("QuadMesh_epsq5")
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.00425, 0)
+mesh = SubResource("CylinderMesh_ajf7i")

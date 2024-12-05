@@ -24,8 +24,8 @@ radius = 0.15
 radius = 0.35
 
 [node name="Ball" type="RigidBody3D"]
-mass = 20.0
-continuous_cd = true
+mass = 200.0
+gravity_scale = 2.0
 script = ExtResource("1_8lfo2")
 
 [node name="BallMesh" type="MeshInstance3D" parent="."]

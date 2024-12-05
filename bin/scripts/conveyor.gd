@@ -12,7 +12,10 @@ var ball_direction : Vector3
 @onready var packed_ball = preload("res://scenes/Ball.tscn")
 @onready var ball_spawn_point = $BallSpawnMarker
 
-@export var score_label : ScoreLabel = null
+@export var node_score_label : ScoreLabel = null
+@export var node_magnet_arm : Node3D = null
+
+var impulsed_balls : Array[Ball] = [null]
 
 
 # VIRTUALS ###################################################################
@@ -24,6 +27,9 @@ func _ready() -> void:
 	# Shift ball impulse vector direction based on rotation.
 	ball_direction = Vector3(-1, 0, 0).rotated(Vector3.UP, global_rotation.y)
 
+func _physics_process(delta: float) -> void:
+	for _ball in impulsed_balls:
+		if _ball is Ball: _ball.apply_impulse(ball_force * ball_direction)
 
 
 # HELPERS ####################################################################
@@ -48,9 +54,22 @@ func on_spawn() -> void:
 	
 	_inst_ball.ball_color = _color
 	_inst_ball.transform.origin = ball_spawn_point.transform.origin
-	_inst_ball.apply_impulse(ball_force * ball_direction)
 	
 	add_child(_inst_ball)
-	if score_label is ScoreLabel: _inst_ball.add_score.connect(score_label.add_score)
+	impulsed_balls.append(_inst_ball)
+	
+	if node_score_label is ScoreLabel: _inst_ball.add_score.connect(node_score_label.add_score)
 	
 	spawn_timer.start(spawn_rate)
+
+
+
+
+
+func _on_impulse_area_body_exited(body: Node3D) -> void:
+	if (
+		body is Ball
+		&& impulsed_balls.has(body)
+		):
+		impulsed_balls.erase(body)
+	

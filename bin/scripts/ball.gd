@@ -7,6 +7,7 @@ class_name Ball
 static var ball_colors : Array[Color]  = [Color(0.8, 0.4, 0.4), Color(0.4, 0.9, 0.4), Color(0.4, 0.6, 0.9)] # red, green, blue
 var ball_color : int
 var chained = false
+var on_conveyor : bool = true
 
 signal add_score(score_amount)
 
@@ -38,7 +39,7 @@ func get_similar_color_collisions() -> Array[Ball]:
 
 func score_point() -> void:
 	var _chain : Array[Ball] = get_similar_color_collisions()
-	var _score = _chain.size() * 10
+	var _score = clamp(_chain.size(), 0, 5)
 	
 	for _ball in _chain:
 		# Define what to go for each scored ball

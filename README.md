@@ -31,7 +31,7 @@ Gameplay:
 
 ## Assignment
 Landscape :   
-Use of splines / Path3D / custom fonts :   
+Use of splines / Path3D / custom fonts : Namya Kamboj  
 
 Particle systems  : Harjot
 

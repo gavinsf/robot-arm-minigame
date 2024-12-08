@@ -35,7 +35,7 @@ Use of splines / Path3D / custom fonts : Namya Kamboj
 
 Particle systems  : Harjot
 
-
+a building made of a set of MeshInstance3D, with brick textures : Harjot (building mesh)
 
 
 Physics simulation to calculate a simple ball / box movement with gravity : Gavin   

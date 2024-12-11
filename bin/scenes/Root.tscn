@@ -1,8 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://gi6bukmewly0"]
+[gd_scene load_steps=16 format=3 uid="uid://gi6bukmewly0"]
 
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_bnnad"]
+[ext_resource type="Theme" uid="uid://dqxcb3snsr2dd" path="res://themes/ui_theme.tres" id="1_k027m"]
 [ext_resource type="PackedScene" uid="uid://ej1it8n2i062" path="res://scenes/Conveyor.tscn" id="2_1vhe0"]
 [ext_resource type="PackedScene" uid="uid://44556255anco" path="res://scenes/MagnetArm.tscn" id="3_r08op"]
+[ext_resource type="FontFile" uid="uid://cjewk41ob0cne" path="res://fonts/ATHLS___.TTF" id="3_ued4l"]
 [ext_resource type="PackedScene" uid="uid://vdjdrf0d6c2e" path="res://scenes/PlayBin.tscn" id="4_0rby3"]
+[ext_resource type="Script" path="res://scripts/score_label.gd" id="4_2g7sn"]
+[ext_resource type="Script" path="res://scripts/chute_controller.gd" id="6_ubdar"]
+[ext_resource type="PackedScene" uid="uid://c3qwck8xqtdtg" path="res://scenes/Building.tscn" id="9_yrjmu"]
+[ext_resource type="Script" path="res://scripts/buildingmesh.gd" id="10_2e4ll"]
+
+[sub_resource type="Curve3D" id="Curve3D_v0tjh"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.0222397, -0.0274601, 0.00370324, 0, 0, 0, 0, 0, 0, -0.0621624, -0.0268822, 0.0103475, 0, 0, 0, 0, 0, 0, -0.0749588, 0.000706673, -0.0667551),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_77tau"]
+font = ExtResource("3_ued4l")
+font_size = 98
+font_color = Color(0.117647, 0.0901961, 0.0705882, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d41c8"]
 sky_top_color = Color(0.711549, 0.573196, 0.48627, 1)
@@ -19,31 +38,147 @@ sky = SubResource("Sky_g8ctf")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Root" type="Node3D"]
+[node name="GameController" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1ejvd")
+[node name="CameraPath" type="Path3D" parent="."]
+transform = Transform3D(-0.16417, 0, -0.986432, 0, 1, 0, 0.986432, 0, -0.16417, 1.90735e-06, 14.0946, 14.2628)
+curve = SubResource("Curve3D_v0tjh")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="PathFollow3D" type="PathFollow3D" parent="CameraPath"]
+transform = Transform3D(-0.164243, -0.762338, 0.625902, -1.19202e-07, 0.63453, 0.772822, -0.986355, 0.126941, -0.104222, -0.000523871, -0.00069448, 8.72357e-05)
+progress = 0.0015889
+
+[node name="Camera3D" type="Camera3D" parent="CameraPath/PathFollow3D"]
+fov = 32.8
+
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("camera_path_follower")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme = ExtResource("1_k027m")
+script = ExtResource("1_bnnad")
+camera_path_follower = NodePath("../CameraPath/PathFollow3D")
+
+[node name="Splash" type="VBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MenuTitle" type="Label" parent="UI/Splash"]
+custom_minimum_size = Vector2(0, 172)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Assem-Ball-y"
+label_settings = SubResource("LabelSettings_77tau")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Splash"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="UI/Splash/MarginContainer"]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="UI/Splash/MarginContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PLAY"
+
+[node name="Expander1" type="Control" parent="UI/Splash"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeaderBoards" type="Label" parent="UI/Splash"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Spacer" type="Control" parent="UI/Splash"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="GameOver" type="VBoxContainer" parent="UI"]
+visible = false
+layout_mode = 0
+offset_right = 87.0
+offset_bottom = 50.0
+
+[node name="GameOverTitle" type="Label" parent="UI/GameOver"]
+layout_mode = 2
+text = "Game Over"
+
+[node name="GameOverMessage" type="Label" parent="UI/GameOver"]
+layout_mode = 2
+
+[node name="Play" type="VBoxContainer" parent="UI"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Score" type="Label" parent="UI/Play"]
+layout_mode = 2
+text = "Score:"
+script = ExtResource("4_2g7sn")
+
+[node name="Enivronment" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enivronment"]
 transform = Transform3D(0.5, 0.75, -0.433013, 0, 0.5, 0.866025, 0.866025, -0.433013, 0.25, 0, 0, 0)
 light_color = Color(1, 0.855333, 0.69, 1)
 shadow_enabled = true
 
-[node name="Enivronment" type="Node" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Enivronment"]
+environment = SubResource("Environment_1ejvd")
 
 [node name="Geometry" type="Node" parent="."]
 
-[node name="Conveyor_1" parent="Geometry" instance=ExtResource("2_1vhe0")]
+[node name="MagnetArm" parent="Geometry" instance=ExtResource("3_r08op")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14001, -2.39084, 4.37579)
 
 [node name="PlayBin" parent="Geometry" instance=ExtResource("4_0rby3")]
-transform = Transform3D(1, 0, 0, 0, 0.95516, -0.296091, 0, 0.296091, 0.95516, -3.45292, -1.94949, 2.58832)
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -1.949, 2.588)
 
-[node name="MagnetArm" parent="Geometry" instance=ExtResource("3_r08op")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.28901, 0, -1.41577)
+[node name="Conveyor_4" parent="Geometry" node_paths=PackedStringArray("node_score_label", "node_magnet_arm", "node_path_origin") instance=ExtResource("2_1vhe0")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2.6, 0, -2.3)
+node_score_label = NodePath("../../UI/Play/Score")
+node_magnet_arm = NodePath("../MagnetArm")
+node_path_origin = NodePath("../../CameraPath")
 
-[node name="Conveyor_2" parent="Geometry" instance=ExtResource("2_1vhe0")]
-transform = Transform3D(-0.189061, 0, 0.981965, 0, 1, 0, -0.981965, 0, -0.189061, -4.55152, 0, -3.08961)
+[node name="Conveyor_3" parent="Geometry" node_paths=PackedStringArray("node_score_label", "node_magnet_arm", "node_path_origin") instance=ExtResource("2_1vhe0")]
+transform = Transform3D(0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, 0.34202, 1.2, 0, -3.2)
+node_score_label = NodePath("../../UI/Play/Score")
+node_magnet_arm = NodePath("../MagnetArm")
+node_path_origin = NodePath("../../CameraPath")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.798551, 0.601926, 0, -0.601926, 0.798551, -3.62272, 2.82832, 6.45548)
-fov = 90.0
+[node name="Conveyor_2" parent="Geometry" node_paths=PackedStringArray("node_score_label", "node_magnet_arm", "node_path_origin") instance=ExtResource("2_1vhe0")]
+transform = Transform3D(-0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, -0.34202, -1.2, 0, -3.2)
+node_score_label = NodePath("../../UI/Play/Score")
+node_magnet_arm = NodePath("../MagnetArm")
+node_path_origin = NodePath("../../CameraPath")
+
+[node name="Conveyor_1" parent="Geometry" node_paths=PackedStringArray("node_score_label", "node_magnet_arm", "node_path_origin") instance=ExtResource("2_1vhe0")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -2.6, 0, -2.3)
+node_score_label = NodePath("../../UI/Play/Score")
+node_magnet_arm = NodePath("../MagnetArm")
+node_path_origin = NodePath("../../CameraPath")
+
+[node name="ChuteController" type="Node3D" parent="Geometry"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.9206, -0.968746, 3.41162)
+script = ExtResource("6_ubdar")
+
+[node name="buildingmesh" parent="Geometry" instance=ExtResource("9_yrjmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52588e-05, -123.964, -100.146)
+script = ExtResource("10_2e4ll")
+
+[connection signal="pressed" from="UI/Splash/MarginContainer/Buttons/Start" to="UI" method="_on_start_pressed"]

@@ -29,12 +29,8 @@ Gameplay:
 - Varying play basin shapes   
 - Powerups / special balls   
 
-## Assignment
-Landscape :   
-Use of splines / Path3D / custom fonts : Namya Kamboj  
-
-Particle systems  : Harjot
-
-A building made of a set of MeshInstance3D, with brick textures :   Harjot (Building mesh)
-
+## Assignment   
+Use of splines / Path3D / custom fonts : Namya Kamboj   
+Particle systems  : Harjot   
 Physics simulation to calculate a simple ball / box movement with gravity : Gavin   
+Gameplay mechanics: Jacob   

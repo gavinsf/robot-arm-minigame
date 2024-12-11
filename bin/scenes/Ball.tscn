@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://3tn04ef0x7oc"]
+[gd_scene load_steps=8 format=3 uid="uid://3tn04ef0x7oc"]
 
 [ext_resource type="Script" path="res://scripts/ball.gd" id="1_8lfo2"]
+[ext_resource type="Material" uid="uid://c16wgdao087gh" path="res://materials/ball_reflective.tres" id="2_11uhv"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_q0ijr"]
 radius = 0.15
@@ -8,25 +9,56 @@ height = 0.3
 radial_segments = 16
 rings = 16
 
+[sub_resource type="SphereMesh" id="SphereMesh_p708g"]
+material = ExtResource("2_11uhv")
+radius = 0.151
+height = 0.149
+radial_segments = 16
+rings = 16
+is_hemisphere = true
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_i4vc7"]
 radius = 0.15
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_jknwj"]
-radius = 0.35
+[sub_resource type="BoxShape3D" id="BoxShape3D_syj60"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8jtmq"]
+radius = 0.15
 
 [node name="Ball" type="RigidBody3D"]
-mass = 20.0
+mass = 25.0
+gravity_scale = 1.25
 script = ExtResource("1_8lfo2")
 
-[node name="BallMeshInstance" type="MeshInstance3D" parent="."]
+[node name="BallMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_q0ijr")
+
+[node name="ReflectiveSideMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_p708g")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_i4vc7")
 
-[node name="ExpandedArea" type="Area3D" parent="."]
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+remote_path = NodePath("../Tracking/RemoteTarget")
+update_rotation = false
+update_scale = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ExpandedArea"]
-shape = SubResource("SphereShape3D_jknwj")
+[node name="Tracking" type="Node" parent="."]
 
-[connection signal="input_event" from="ExpandedArea" to="." method="_on_click_area_input_event"]
+[node name="RemoteTarget" type="Node3D" parent="Tracking"]
+
+[node name="ChainArea" type="Area3D" parent="Tracking/RemoteTarget"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tracking/RemoteTarget/ChainArea"]
+shape = SubResource("BoxShape3D_syj60")
+
+[node name="ClickArea" type="Area3D" parent="Tracking/RemoteTarget"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tracking/RemoteTarget/ClickArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.07022)
+shape = SubResource("SphereShape3D_8jtmq")
+
+[connection signal="input_event" from="Tracking/RemoteTarget/ClickArea" to="." method="_on_click_area_input_event"]

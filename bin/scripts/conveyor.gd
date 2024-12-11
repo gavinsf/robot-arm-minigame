@@ -25,7 +25,6 @@ func _ready() -> void:
 	# Manage timer.
 	add_child(spawn_timer)
 	spawn_timer.timeout.connect(_on_spawn)
-	spawn_timer.start(spawn_rate + randf()*2)
 	# Shift ball impulse vector direction based on rotation.
 	ball_direction = Vector3(-1, 0, 0).rotated(Vector3.UP, global_rotation.y)
 
@@ -36,6 +35,9 @@ func _physics_process(delta: float) -> void:
 
 
 # SIGNALS ####################################################################
+func _on_start_pressed():
+	spawn_timer.start(spawn_rate + randf()*2)
+
 func _on_impulse_area_body_exited(body: Node3D) -> void:
 	if (
 		body is Ball

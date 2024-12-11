@@ -182,3 +182,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52588e-05, -123.964, -100.1
 script = ExtResource("10_2e4ll")
 
 [connection signal="pressed" from="UI/Splash/MarginContainer/Buttons/Start" to="UI" method="_on_start_pressed"]
+[connection signal="pressed" from="UI/Splash/MarginContainer/Buttons/Start" to="Geometry/Conveyor_4" method="_on_start_pressed"]
+[connection signal="pressed" from="UI/Splash/MarginContainer/Buttons/Start" to="Geometry/Conveyor_3" method="_on_start_pressed"]
+[connection signal="pressed" from="UI/Splash/MarginContainer/Buttons/Start" to="Geometry/Conveyor_2" method="_on_start_pressed"]
+[connection signal="pressed" from="UI/Splash/MarginContainer/Buttons/Start" to="Geometry/Conveyor_1" method="_on_start_pressed"]

@@ -5,7 +5,6 @@ extends Node3D
 
 # MEMBERS ####################################################################
 @onready var node_armature =  $Armature
-@onready var node_animation_player =  $AnimationPlayer
 var viewport_height : int
 var slerp_count : int = 25
 var target = Vector3(0, -2.0, 2.5)

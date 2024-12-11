@@ -367,7 +367,7 @@ bones/10/rotation = Quaternion(0, 0, 0, 1)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="Magnet" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(1, 2.32685e-13, -1.90964e-13, 2.25677e-13, -0.999998, -0.00191492, -1.94466e-13, 0.00191492, -0.999998, 0.0376951, 2.80587, -0.65676)
+transform = Transform3D(1, 2.32685e-13, -1.90964e-13, 2.54099e-13, -0.999998, -0.00191504, -1.94466e-13, 0.00191504, -0.999998, 0.0376951, 2.80587, -0.65676)
 bone_name = "Magnet"
 bone_idx = 4
 
@@ -376,7 +376,7 @@ mesh = SubResource("ArrayMesh_11slp")
 skeleton = NodePath("")
 
 [node name="Hinge_Magnet" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(1.95638e-13, 1, 2.49988e-08, -0.842106, -5.66204e-11, 1.66812e-06, 1.66812e-06, -2.9686e-08, 0.842105, 0, 2.80562, -0.354392)
+transform = Transform3D(1.95638e-13, 1, 2.49988e-08, -0.842106, -5.65955e-11, 1.76858e-06, 1.76847e-06, -2.9686e-08, 0.842105, 0, 2.80562, -0.354392)
 bone_name = "Hinge_Magnet"
 bone_idx = 5
 
@@ -385,7 +385,7 @@ mesh = SubResource("ArrayMesh_8fi7a")
 skeleton = NodePath("")
 
 [node name="Gimble" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(1, -2.98428e-13, -7.4607e-14, 2.41585e-13, 0.639603, 0.768705, -1.84741e-13, -0.768705, 0.639603, -9.81931e-14, 2.34179, 0.193449)
+transform = Transform3D(1, -2.98428e-13, -7.4607e-14, 2.70006e-13, 0.639603, 0.768705, -1.84741e-13, -0.768705, 0.639603, -1.09357e-13, 2.34179, 0.193449)
 bone_name = "Gimble"
 bone_idx = 6
 
@@ -394,7 +394,7 @@ mesh = SubResource("ArrayMesh_56r0t")
 skeleton = NodePath("")
 
 [node name="Hinge_Gimble" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(-1.19209e-07, 1, -2.98021e-08, -1, -9.91556e-08, 6.55651e-07, 6.85453e-07, 7.25749e-08, 1, 1.49196e-13, 1.81393, 0.833911)
+transform = Transform3D(-1.19209e-07, 1, -2.98021e-08, -1, -9.91556e-08, 7.15256e-07, 7.7486e-07, 7.25749e-08, 1, 1.38032e-13, 1.81394, 0.833911)
 bone_name = "Hinge_Gimble"
 bone_idx = 7
 
@@ -403,7 +403,7 @@ mesh = SubResource("ArrayMesh_5y33t")
 skeleton = NodePath("")
 
 [node name="Arm" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(1, 7.9492e-14, -1.42109e-14, -7.10543e-14, 0.858855, -0.512219, -5.68434e-14, 0.512219, 0.858855, 7.79516e-14, 1.12886, 0.410973)
+transform = Transform3D(1, 7.23865e-14, -1.42109e-14, -5.68434e-14, 0.858855, -0.512219, -2.84217e-14, 0.512219, 0.858855, 7.25019e-14, 1.12886, 0.410973)
 bone_name = "Arm"
 bone_idx = 8
 
@@ -412,7 +412,7 @@ mesh = SubResource("ArrayMesh_0qtde")
 skeleton = NodePath("")
 
 [node name="Hinge_Arm" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(7.22866e-08, 1, 3.45789e-14, -1.21277, 5.11916e-08, 1.3113e-06, 1.3113e-06, 3.05306e-08, 1.21277, 1.78052e-14, 0.488043, -0.000498891)
+transform = Transform3D(7.22866e-08, 1, 3.0165e-14, -1.21277, 5.11917e-08, 1.37091e-06, 1.37091e-06, 3.05306e-08, 1.21277, 1.77636e-14, 0.488043, -0.000498891)
 bone_name = "Hinge_Arm"
 bone_idx = 9
 

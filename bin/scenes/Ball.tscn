@@ -58,7 +58,7 @@ shape = SubResource("BoxShape3D_syj60")
 [node name="ClickArea" type="Area3D" parent="Tracking/RemoteTarget"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tracking/RemoteTarget/ClickArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.618671)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.07022)
 shape = SubResource("SphereShape3D_8jtmq")
 
 [connection signal="input_event" from="Tracking/RemoteTarget/ClickArea" to="." method="_on_click_area_input_event"]

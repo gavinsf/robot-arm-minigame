@@ -14,7 +14,7 @@ var ball_direction : Vector3
 
 @export var node_score_label : ScoreLabel = null
 @export var node_magnet_arm : Node3D = null
-@export var node_camera : Camera3D = null
+@export var node_path_origin : Path3D = null
 
 var impulsed_balls : Array[Ball] = [null]
 
@@ -63,12 +63,13 @@ func _on_spawn() -> void:
 			balls_markov_chain[_result] -= 1
 	
 	_inst_ball.ball_color = _color
-	_inst_ball.transform.origin = ball_spawn_point.transform.origin
 	if node_score_label: _inst_ball.add_score.connect(node_score_label.add_score)
-	if node_camera: _inst_ball.node_current_camera = node_camera
+	if node_path_origin: _inst_ball.node_path_origin = node_path_origin
 	if node_magnet_arm: _inst_ball.node_magnet_arm = node_magnet_arm
 	
 	add_child(_inst_ball)
 	impulsed_balls.append(_inst_ball)
-	
 	spawn_timer.start(spawn_rate)
+	
+	for _i in range(8):
+		_inst_ball.transform.origin = ball_spawn_point.transform.origin.slerp(ball_spawn_point.transform.origin, .2)

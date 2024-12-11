@@ -6,7 +6,7 @@ class_name Ball
 
 
 # MEMBERS ####################################################################
-var node_current_camera : Camera3D
+var node_path_origin : Path3D
 var node_magnet_arm : Node3D = null
 @onready var ball_mesh : MeshInstance3D = $BallMesh
 @onready var chain_area : Area3D = $Tracking/RemoteTarget/ChainArea
@@ -57,7 +57,7 @@ func score_point() -> void:
 		add_score.emit(_score)
 
 func adjust_click_angle() -> void:
-	click_area.look_at(node_current_camera.transform.origin)
+	click_area.look_at(node_path_origin.transform.origin)
 
 
 

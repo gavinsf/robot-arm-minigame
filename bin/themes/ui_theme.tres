@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dqxcb3snsr2dd"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_fi8un"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+grow_begin = -6.0
+grow_end = -6.0
+thickness = 38
+vertical = true
+
+[resource]
+Button/font_sizes/font_size = 48
+Button/styles/normal = SubResource("StyleBoxLine_fi8un")
+MarginContainer/constants/margin_left = 64
+MarginContainer/constants/margin_right = 64

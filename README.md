@@ -30,7 +30,7 @@ Gameplay:
 - Powerups / special balls   
 
 ## Assignment   
-Use of splines / Path3D / custom fonts : Namya Kamboj   
+Use of splines (added Fog in Background moving over a hilbert curve and Catmull-Rom Spline) : Namya Kamboj   
 Particle systems  : Harjot   
 Physics simulation to calculate a simple ball / box movement with gravity : Gavin   
 Gameplay mechanics: Jacob   

@@ -14,6 +14,8 @@ func _ready() -> void:
 
 
 
+
+
 # METHODS ####################################################################
 func add_score(amount) -> void:
 	score += amount

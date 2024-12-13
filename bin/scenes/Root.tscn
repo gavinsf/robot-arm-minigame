@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://gi6bukmewly0"]
+[gd_scene load_steps=18 format=3 uid="uid://gi6bukmewly0"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_bnnad"]
 [ext_resource type="Theme" uid="uid://dqxcb3snsr2dd" path="res://themes/ui_theme.tres" id="1_k027m"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/chute_controller.gd" id="6_ubdar"]
 [ext_resource type="PackedScene" uid="uid://c3qwck8xqtdtg" path="res://scenes/Building.tscn" id="9_yrjmu"]
 [ext_resource type="Script" path="res://scripts/buildingmesh.gd" id="10_2e4ll"]
+[ext_resource type="Script" path="res://scenes/area_3d.gd" id="11_wocen"]
 
 [sub_resource type="Curve3D" id="Curve3D_v0tjh"]
 _data = {
@@ -37,6 +38,9 @@ background_mode = 2
 sky = SubResource("Sky_g8ctf")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g2ig8"]
+size = Vector3(2.90942, 1, 0.795792)
 
 [node name="GameController" type="Node3D"]
 
@@ -107,11 +111,10 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="GameOver" type="VBoxContainer" parent="UI"]
-visible = false
+[node name="GameOver" type="PanelContainer" parent="UI"]
 layout_mode = 0
-offset_right = 87.0
-offset_bottom = 50.0
+offset_right = 506.0
+offset_bottom = 898.0
 
 [node name="GameOverTitle" type="Label" parent="UI/GameOver"]
 layout_mode = 2
@@ -119,15 +122,19 @@ text = "Game Over"
 
 [node name="GameOverMessage" type="Label" parent="UI/GameOver"]
 layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Play" type="VBoxContainer" parent="UI"]
-visible = false
+[node name="Play" type="CenterContainer" parent="UI"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1.0
+offset_top = 777.0
+offset_right = 504.0
+offset_bottom = 898.0
 
 [node name="Score" type="Label" parent="UI/Play"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 45
 text = "Score:"
 script = ExtResource("4_2g7sn")
 
@@ -180,6 +187,14 @@ script = ExtResource("6_ubdar")
 [node name="buildingmesh" parent="Geometry" instance=ExtResource("9_yrjmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52588e-05, -123.964, -100.146)
 script = ExtResource("10_2e4ll")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.32687, 0)
+script = ExtResource("11_wocen")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0032953, 4.21538, -0.59854)
+shape = SubResource("BoxShape3D_g2ig8")
 
 [connection signal="pressed" from="UI/Splash/MarginContainer/Buttons/Start" to="UI" method="_on_start_pressed"]
 [connection signal="pressed" from="UI/Splash/MarginContainer/Buttons/Start" to="Geometry/Conveyor_4" method="_on_start_pressed"]

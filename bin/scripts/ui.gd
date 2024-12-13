@@ -15,6 +15,9 @@ const PROGRESS_PLAY = 0.01
 # VIRTUALS ###################################################################
 func _ready() -> void:
 	focus(PROGRESS_SPLASH)
+	node_ui_play.hide()
+	node_ui_game_over.hide()
+	
 
 func _input(event: InputEvent) -> void:
 	# Exit program on Esc key pressed.
@@ -30,4 +33,9 @@ func focus(progress_ratio : float) -> void:
 func _on_start_pressed() -> void:
 	focus(PROGRESS_PLAY)
 	node_ui_splash.hide()
+	node_ui_play.show()
 	pass # Replace with function body.
+	
+func game_over():
+	node_ui_game_over.show()
+	pass

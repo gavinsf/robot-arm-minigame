@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c3qwck8xqtdtg" path="res://scenes/Building.tscn" id="9_yrjmu"]
 [ext_resource type="Script" path="res://scripts/buildingmesh.gd" id="10_2e4ll"]
 [ext_resource type="Script" path="res://scenes/area_3d.gd" id="11_wocen"]
-[ext_resource type="Texture2D" uid="uid://b0bfa8gaacvxo" path="res://textures/fx_cloudalpha01.png" id="13_4oqj8"]
+[ext_resource type="Texture2D" uid="uid://yth6j7xyhxm" path="res://textures/fx_cloudalpha01.png" id="13_4oqj8"]
 
 [sub_resource type="Curve3D" id="Curve3D_v0tjh"]
 _data = {

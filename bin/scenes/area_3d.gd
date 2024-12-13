@@ -18,3 +18,4 @@ func _process(delta: float) -> void:
 func game_over(_name) -> void:
 	ui.game_over()
 	pass
+	

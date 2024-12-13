@@ -1,7 +1,4 @@
 extends Node3D
-## Creates balls, accelerating them if they reside in the PropellArea node
-
-
 
 # MEMBERS ####################################################################
 var balls_markov_chain : Array[int] = [3,3,3]
@@ -11,14 +8,12 @@ var ball_force = 60.0
 var ball_direction : Vector3
 @onready var packed_ball = preload("res://scenes/Ball.tscn")
 @onready var ball_spawn_point = $BallSpawnMarker
-
+@onready var click_sound = preload("res://sounds/pop_0.wav")  
 @export var node_score_label : ScoreLabel = null
 @export var node_magnet_arm : Node3D = null
 @export var node_path_origin : Path3D = null
 
 var impulsed_balls : Array[Ball] = [null]
-
-
 
 # VIRTUALS ###################################################################
 func _ready() -> void:
@@ -31,8 +26,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	for _ball in impulsed_balls:
 		if _ball is Ball: _ball.apply_impulse((ball_force * delta) * ball_direction)
-
-
 
 # SIGNALS ####################################################################
 func _on_start_pressed():
@@ -75,3 +68,15 @@ func _on_spawn() -> void:
 	
 	for _i in range(8):
 		_inst_ball.transform.origin = ball_spawn_point.transform.origin.slerp(ball_spawn_point.transform.origin, .2)
+	
+	# Connect the ball's input_event signal to the function that plays the sound
+	_inst_ball.connect("input_event", Callable(self, "_on_ball_clicked"))
+
+# METHODS ####################################################################
+func _on_ball_clicked(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.pressed:
+		var audio_player = AudioStreamPlayer2D.new()
+		audio_player.stream = click_sound
+		add_child(audio_player)
+		audio_player.play()
+		queue_free()  # Remove the ball after playing the sound

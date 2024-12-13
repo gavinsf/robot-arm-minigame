@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://gi6bukmewly0"]
+[gd_scene load_steps=32 format=3 uid="uid://gi6bukmewly0"]
 
+[ext_resource type="Script" path="res://scenes/root.gd" id="1_4r6kq"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_bnnad"]
 [ext_resource type="Theme" uid="uid://dqxcb3snsr2dd" path="res://themes/ui_theme.tres" id="1_k027m"]
 [ext_resource type="PackedScene" uid="uid://ej1it8n2i062" path="res://scenes/Conveyor.tscn" id="2_1vhe0"]
@@ -16,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bfdayf8qqco4r" path="res://Video/Untitled design.jpg" id="13_726he"]
 [ext_resource type="Shader" uid="uid://c4cxmi8f2d3sf" path="res://shaders/sparks2.tres" id="15_if0fa"]
 [ext_resource type="Texture2D" uid="uid://bg33txbf0mi23" path="res://textures/T_circle42.PNG" id="16_hl55h"]
+[ext_resource type="Texture2D" uid="uid://dw8jbyp386yjq" path="res://textures/fx_cloudalpha01.png" id="18_0m2ni"]
 
 [sub_resource type="Curve3D" id="Curve3D_v0tjh"]
 _data = {
@@ -73,7 +75,18 @@ alpha_curve = SubResource("CurveTexture_aqnmt")
 [sub_resource type="QuadMesh" id="QuadMesh_7hakh"]
 size = Vector2(0.25, 0.6)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcif7"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("18_0m2ni")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_83hpt"]
+material = SubResource("StandardMaterial3D_kcif7")
+size = Vector2(200, 200)
+
 [node name="GameController" type="Node3D"]
+script = ExtResource("1_4r6kq")
 
 [node name="CameraPath" type="Path3D" parent="."]
 transform = Transform3D(-0.16417, 0, -0.986432, 0, 1, 0, 0.986432, 0, -0.16417, 1.90735e-06, 14.0946, 14.2628)
@@ -274,6 +287,10 @@ lifetime = 0.24
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ygutd")
 draw_pass_1 = SubResource("QuadMesh_7hakh")
+
+[node name="Fog" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.759, -11.89, -20.37)
+mesh = SubResource("QuadMesh_83hpt")
 
 [connection signal="finished" from="UI/Splash/MarginContainer/Buttons/VideoStreamPlayer" to="UI/Splash/MarginContainer/Buttons/VideoStreamPlayer" method="_on_finished"]
 [connection signal="pressed" from="UI/Splash/MarginContainer/VBoxContainer/Start" to="Geometry/MagnetArm" method="_on_start_pressed"]

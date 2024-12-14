@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://ej1it8n2i062"]
+[gd_scene load_steps=17 format=3 uid="uid://ej1it8n2i062"]
 
 [ext_resource type="Script" path="res://scripts/conveyor.gd" id="1_lshtm"]
+[ext_resource type="Texture2D" uid="uid://dbtuyrg330qyr" path="res://textures/brick_texture.png" id="2_xptkt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_adq3a"]
 size = Vector3(5, 0.2, 1)
@@ -27,8 +28,19 @@ size = Vector2(4, 0.5)
 [sub_resource type="PlaneMesh" id="PlaneMesh_avh1u"]
 size = Vector2(4, 0.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqwn0"]
+albedo_texture = ExtResource("2_xptkt")
+albedo_texture_force_srgb = true
+
 [sub_resource type="BoxMesh" id="BoxMesh_gmsoh"]
 size = Vector3(0.1, 6, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6pvi"]
+albedo_texture = ExtResource("2_xptkt")
+albedo_texture_force_srgb = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a5oe"]
+albedo_color = Color(0.59323, 0.654075, 0.54329, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_168mn"]
 
@@ -79,15 +91,18 @@ skeleton = NodePath("../..")
 
 [node name="EdgeFront" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -3, 0)
+material_override = SubResource("StandardMaterial3D_oqwn0")
 mesh = SubResource("BoxMesh_gmsoh")
 skeleton = NodePath("../..")
 
 [node name="EdgeBack" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3, 0)
+material_override = SubResource("StandardMaterial3D_n6pvi")
 mesh = SubResource("BoxMesh_gmsoh")
 
 [node name="Source" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42568, 0.65577, -0.000283122)
+material_override = SubResource("StandardMaterial3D_0a5oe")
 mesh = SubResource("BoxMesh_168mn")
 
 [node name="SourceDark" type="MeshInstance3D" parent="Geometry"]

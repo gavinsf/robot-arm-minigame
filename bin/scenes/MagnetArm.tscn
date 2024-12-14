@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://44556255anco"]
+[gd_scene load_steps=22 format=4 uid="uid://44556255anco"]
 
 [ext_resource type="Texture2D" uid="uid://l5tk8n46tep0" path="res://models/blender/magnet_arm/textures/magnet_red.png" id="1_1pg4v"]
 [ext_resource type="Script" path="res://scripts/magnet_arm.gd" id="1_r8uk5"]
@@ -277,6 +277,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hoewp")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7k6tx"]
+albedo_color = Color(0.279222, 0.189886, 0.033391, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_ajf7i"]
 height = 6.0
 radial_segments = 16
@@ -431,4 +434,5 @@ skeleton = NodePath("")
 
 [node name="Base" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.96989, 0)
+material_override = SubResource("StandardMaterial3D_7k6tx")
 mesh = SubResource("CylinderMesh_ajf7i")

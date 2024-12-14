@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://gi6bukmewly0"]
+[gd_scene load_steps=50 format=3 uid="uid://gi6bukmewly0"]
 
 [ext_resource type="Script" path="res://scenes/root.gd" id="1_4r6kq"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_bnnad"]
@@ -95,6 +95,9 @@ shader_parameter/explosion_amount = null
 material = SubResource("ShaderMaterial_2mdqe")
 text = "Lets play "
 font_size = 40
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uojy1"]
+albedo_color = Color(0.325461, 0.173019, 0.175515, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_475dc"]
 render_priority = 0
@@ -210,6 +213,7 @@ draw_pass_1 = SubResource("QuadMesh_7hakh")
 transform = Transform3D(0.991395, -0.0666734, -0.112655, 0.101588, 0.934608, 0.340865, 0.0825615, -0.349376, 0.933339, 2.21081, 0.235085, 0.270782)
 material_override = SubResource("ShaderMaterial_teubp")
 transparency = 0.68
+emitting = false
 amount = 500
 lifetime = 4.0
 one_shot = true
@@ -253,6 +257,7 @@ script = ExtResource("6_ubdar")
 
 [node name="buildingmesh" parent="Geometry" instance=ExtResource("9_yrjmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52588e-05, -123.964, -100.146)
+material_override = SubResource("StandardMaterial3D_uojy1")
 script = ExtResource("10_2e4ll")
 
 [node name="Flamcloudl_1" type="MeshInstance3D" parent="Geometry"]

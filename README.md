@@ -32,6 +32,6 @@ Gameplay:
 ## Assignment   
 Use of splines / Path3D / custom fonts : Namya Kamboj   
 Particle systems  : Harjot    
-Main Menu Ui : Karanjit
+Main Menu UI : Karanjit along with Vaishnavi
 Physics simulation to calculate a simple ball / box movement with gravity : Gavin   
 Gameplay mechanics: Jacob   

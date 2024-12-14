@@ -1,34 +1,25 @@
-<<<<<<< HEAD
-[gd_scene load_steps=32 format=3 uid="uid://gi6bukmewly0"]
-=======
-[gd_scene load_steps=27 format=3 uid="uid://gi6bukmewly0"]
->>>>>>> 036cc16 ( particle systems)
+[gd_scene load_steps=44 format=3 uid="uid://gi6bukmewly0"]
 
 [ext_resource type="Script" path="res://scenes/root.gd" id="1_4r6kq"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_bnnad"]
 [ext_resource type="Theme" uid="uid://dqxcb3snsr2dd" path="res://themes/ui_theme.tres" id="1_k027m"]
 [ext_resource type="PackedScene" uid="uid://ej1it8n2i062" path="res://scenes/Conveyor.tscn" id="2_1vhe0"]
 [ext_resource type="Script" path="res://scenes/video_stream_player.gd" id="2_nhqar"]
-[ext_resource type="PackedScene" uid="uid://k1c5q0emxvrr" path="res://scenes/sparks.tscn" id="2_x1ye5"]
 [ext_resource type="PackedScene" uid="uid://44556255anco" path="res://scenes/MagnetArm.tscn" id="3_r08op"]
 [ext_resource type="FontFile" uid="uid://cjewk41ob0cne" path="res://fonts/ATHLS___.TTF" id="3_ued4l"]
 [ext_resource type="PackedScene" uid="uid://vdjdrf0d6c2e" path="res://scenes/PlayBin.tscn" id="4_0rby3"]
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="4_2g7sn"]
+[ext_resource type="Texture2D" uid="uid://0u4nb7lbhy4a" path="res://textures/T_cracks35.png" id="6_bsnvq"]
 [ext_resource type="Script" path="res://scripts/chute_controller.gd" id="6_ubdar"]
-[ext_resource type="Shader" uid="uid://da2d1qbi7d78o" path="res://shaders/explosion_cloud.tres" id="7_jaarg"]
 [ext_resource type="PackedScene" uid="uid://c3qwck8xqtdtg" path="res://scenes/Building.tscn" id="9_yrjmu"]
 [ext_resource type="Script" path="res://scripts/buildingmesh.gd" id="10_2e4ll"]
-[ext_resource type="Texture2D" uid="uid://0u4nb7lbhy4a" path="res://textures/T_cracks35.png" id="10_iob8g"]
+[ext_resource type="Shader" uid="uid://b6iopvsm1imqq" path="res://shaders/test.tres" id="11_042m8"]
 [ext_resource type="Script" path="res://scenes/area_3d.gd" id="11_wocen"]
 [ext_resource type="VideoStream" path="res://Video/Bvid.ogv" id="12_6vs5d"]
 [ext_resource type="Texture2D" uid="uid://bfdayf8qqco4r" path="res://Video/Untitled design.jpg" id="13_726he"]
-<<<<<<< HEAD
 [ext_resource type="Shader" uid="uid://c4cxmi8f2d3sf" path="res://shaders/sparks2.tres" id="15_if0fa"]
 [ext_resource type="Texture2D" uid="uid://bg33txbf0mi23" path="res://textures/T_circle42.PNG" id="16_hl55h"]
 [ext_resource type="Texture2D" uid="uid://dw8jbyp386yjq" path="res://textures/fx_cloudalpha01.png" id="18_0m2ni"]
-=======
-[ext_resource type="PackedScene" uid="uid://cm40pdkohpoir" path="res://scenes/explosion.tscn" id="19_jhas1"]
->>>>>>> 036cc16 ( particle systems)
 
 [sub_resource type="Curve3D" id="Curve3D_v0tjh"]
 _data = {
@@ -51,25 +42,6 @@ background_mode = 2
 sky = SubResource("Sky_g8ctf")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g11hh"]
-render_priority = 0
-shader = ExtResource("7_jaarg")
-shader_parameter/cloud_speed = Vector2(0, 0.7)
-shader_parameter/cloud_instensity = 0.2
-shader_parameter/disappearcloud = 0.566
-shader_parameter/explostion_color = Color(0.475848, 0.214537, 0.00806156, 1)
-shader_parameter/explosion_amount = 0.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_e7ctn"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_g2ig8"]
-size = Vector3(2.90942, 1, 0.795792)
-
-[sub_resource type="LabelSettings" id="LabelSettings_77tau"]
-font = ExtResource("3_ued4l")
-font_size = 98
-font_color = Color(0.117647, 0.0901961, 0.0705882, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n1dti"]
 render_priority = 0
@@ -96,6 +68,68 @@ alpha_curve = SubResource("CurveTexture_aqnmt")
 
 [sub_resource type="QuadMesh" id="QuadMesh_7hakh"]
 size = Vector2(0.25, 0.6)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_475dc"]
+render_priority = 0
+shader = ExtResource("11_042m8")
+shader_parameter/cloud_speed = Vector2(0.2, 1.5)
+shader_parameter/cloud_instensity = 0.2
+shader_parameter/disappearcloud = 0.417
+shader_parameter/explostion_color = Color(0.56259, 0.215437, 0.0839876, 1)
+shader_parameter/explosion_amount = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ewanl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g2ig8"]
+size = Vector3(2.90942, 1, 0.795792)
+
+[sub_resource type="LabelSettings" id="LabelSettings_77tau"]
+font = ExtResource("3_ued4l")
+font_size = 98
+font_color = Color(0.117647, 0.0901961, 0.0705882, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e745t"]
+render_priority = 0
+shader = ExtResource("11_042m8")
+shader_parameter/cloud_speed = Vector2(0.5, 0.5)
+shader_parameter/cloud_instensity = 0.5
+shader_parameter/disappearcloud = 0.272
+shader_parameter/explostion_color = Color(0.50478, 0.273359, 0.0240757, 1)
+shader_parameter/explosion_amount = 0.947
+
+[sub_resource type="Curve" id="Curve_u8dk2"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5ybvs"]
+curve = SubResource("Curve_u8dk2")
+
+[sub_resource type="Gradient" id="Gradient_lnpec"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c0be7"]
+gradient = SubResource("Gradient_lnpec")
+use_hdr = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_k6vsp"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v57hj"]
+emission_shape = 1
+emission_sphere_radius = 5.0
+angle_min = 14.0
+angle_max = 15.0
+angle_curve = SubResource("CurveTexture_5ybvs")
+direction = Vector3(0, 1, 0)
+spread = 180.0
+radial_velocity_min = 12.0
+radial_velocity_max = 12.1
+gravity = Vector3(0, 0, 0)
+color = Color(0.417244, 0.236623, 0.195505, 1)
+color_ramp = SubResource("GradientTexture1D_c0be7")
+emission_curve = SubResource("CurveTexture_k6vsp")
+
+[sub_resource type="SphereMesh" id="SphereMesh_0vmts"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcif7"]
 transparency = 1
@@ -135,14 +169,22 @@ environment = SubResource("Environment_1ejvd")
 
 [node name="MagnetArm" parent="Geometry" instance=ExtResource("3_r08op")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14001, -1.84856, 4.37579)
-<<<<<<< HEAD
-=======
 
-[node name="sparks" parent="Geometry/MagnetArm" instance=ExtResource("2_x1ye5")]
->>>>>>> 036cc16 ( particle systems)
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Geometry/MagnetArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00309014, 0.36841, 0.17752)
+material_override = SubResource("ShaderMaterial_n1dti")
+amount = 15
+lifetime = 0.24
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ygutd")
+draw_pass_1 = SubResource("QuadMesh_7hakh")
 
 [node name="PlayBin" parent="Geometry" instance=ExtResource("4_0rby3")]
 transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -1.949, 2.588)
+
+[node name="Decal" type="Decal" parent="Geometry/PlayBin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0633146, -2.12707)
+texture_albedo = ExtResource("6_bsnvq")
 
 [node name="Conveyor_4" parent="Geometry" node_paths=PackedStringArray("node_score_label", "node_magnet_arm", "node_path_origin") instance=ExtResource("2_1vhe0")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2.6, 0, -2.3)
@@ -176,25 +218,20 @@ script = ExtResource("6_ubdar")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52588e-05, -123.964, -100.146)
 script = ExtResource("10_2e4ll")
 
-[node name="Lavacloud_1" type="MeshInstance3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, -0.121662, -0.992572, 0, 0.992572, -0.121662, -0.0991207, 0.181455, -3.59363)
-material_override = SubResource("ShaderMaterial_g11hh")
-mesh = SubResource("SphereMesh_e7ctn")
+[node name="Flamcloudl_1" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68352, 0.105498, -4.02376)
+material_override = SubResource("ShaderMaterial_475dc")
+mesh = SubResource("SphereMesh_ewanl")
 
-[node name="Lavacloud_2" type="MeshInstance3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 0.0875904, 0.996157, 0, -0.996157, 0.0875904, 3.14935, 0.181455, -4.55246)
-material_override = SubResource("ShaderMaterial_g11hh")
-mesh = SubResource("SphereMesh_e7ctn")
+[node name="Flamecloud_2" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0428286, 0.105498, -4.02376)
+material_override = SubResource("ShaderMaterial_475dc")
+mesh = SubResource("SphereMesh_ewanl")
 
-[node name="Lavacloud_3" type="MeshInstance3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, -0.121662, -0.992572, 0, 0.992572, -0.121662, -3.0757, 0.181455, -4.55246)
-material_override = SubResource("ShaderMaterial_g11hh")
-mesh = SubResource("SphereMesh_e7ctn")
-
-[node name="Decal" type="Decal" parent="Geometry"]
-transform = Transform3D(0.0366437, 0, 0.999328, 0, 1, 0, -0.999328, 0, 0.0366437, -0.0472212, -1.45545, 0.338004)
-size = Vector3(1.57129, 4.894, 3.10443)
-texture_albedo = ExtResource("10_iob8g")
+[node name="Flamecloud_3" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.97448, 0.105498, -4.34711)
+material_override = SubResource("ShaderMaterial_475dc")
+mesh = SubResource("SphereMesh_ewanl")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.32687, 0)
@@ -326,27 +363,20 @@ size_flags_horizontal = 3
 text = "Restart "
 metadata/_edit_use_anchors_ = true
 
-<<<<<<< HEAD
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13692, -1.48015, 4.55331)
-material_override = SubResource("ShaderMaterial_n1dti")
-amount = 15
-lifetime = 0.24
+[node name="explosion" type="GPUParticles3D" parent="UI"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.02223, -0.0201621)
+material_override = SubResource("ShaderMaterial_e745t")
+emitting = false
+amount = 500
+lifetime = 1.88
 explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_ygutd")
-draw_pass_1 = SubResource("QuadMesh_7hakh")
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_v57hj")
+draw_pass_1 = SubResource("SphereMesh_0vmts")
 
 [node name="Fog" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.759, -11.89, -20.37)
 mesh = SubResource("QuadMesh_83hpt")
-=======
-[node name="explosion" parent="UI" instance=ExtResource("19_jhas1")]
-transform = Transform3D(1, 0, 0, 0, 0.999963, -0.00862182, 0, 0.00862182, 0.999963, 0, -1.51291, 2.66332)
-emitting = false
-amount = 600
-lifetime = 4.62
-explosiveness = 1.0
->>>>>>> 036cc16 ( particle systems)
 
 [connection signal="finished" from="UI/Splash/MarginContainer/Buttons/VideoStreamPlayer" to="UI/Splash/MarginContainer/Buttons/VideoStreamPlayer" method="_on_finished"]
 [connection signal="pressed" from="UI/Splash/MarginContainer/VBoxContainer/Start" to="Geometry/MagnetArm" method="_on_start_pressed"]

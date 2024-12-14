@@ -68,10 +68,6 @@ void fragment() {
 
 }
 "
-<<<<<<< HEAD
-graph_offset = Vector2(-49.821, -1.30916)
-=======
->>>>>>> 036cc16 ( particle systems)
 flags/unshaded = true
 nodes/vertex/2/node = SubResource("VisualShaderNodeBillboard_c13u8")
 nodes/vertex/2/position = Vector2(-60, 260)

@@ -3,7 +3,6 @@ extends Control
 @onready var node_ui_game_over = $GameOver
 @onready var node_ui_play = $Play
 @onready var node_ui_splash = $Splash
-
 @onready var particles = $explosion  # Ensure this is a GPUParticles3D node
 @export var camera_path_follower : PathFollow3D
 

@@ -1,23 +1,34 @@
+<<<<<<< HEAD
 [gd_scene load_steps=32 format=3 uid="uid://gi6bukmewly0"]
+=======
+[gd_scene load_steps=27 format=3 uid="uid://gi6bukmewly0"]
+>>>>>>> 036cc16 ( particle systems)
 
 [ext_resource type="Script" path="res://scenes/root.gd" id="1_4r6kq"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_bnnad"]
 [ext_resource type="Theme" uid="uid://dqxcb3snsr2dd" path="res://themes/ui_theme.tres" id="1_k027m"]
 [ext_resource type="PackedScene" uid="uid://ej1it8n2i062" path="res://scenes/Conveyor.tscn" id="2_1vhe0"]
 [ext_resource type="Script" path="res://scenes/video_stream_player.gd" id="2_nhqar"]
+[ext_resource type="PackedScene" uid="uid://k1c5q0emxvrr" path="res://scenes/sparks.tscn" id="2_x1ye5"]
 [ext_resource type="PackedScene" uid="uid://44556255anco" path="res://scenes/MagnetArm.tscn" id="3_r08op"]
 [ext_resource type="FontFile" uid="uid://cjewk41ob0cne" path="res://fonts/ATHLS___.TTF" id="3_ued4l"]
 [ext_resource type="PackedScene" uid="uid://vdjdrf0d6c2e" path="res://scenes/PlayBin.tscn" id="4_0rby3"]
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="4_2g7sn"]
 [ext_resource type="Script" path="res://scripts/chute_controller.gd" id="6_ubdar"]
+[ext_resource type="Shader" uid="uid://da2d1qbi7d78o" path="res://shaders/explosion_cloud.tres" id="7_jaarg"]
 [ext_resource type="PackedScene" uid="uid://c3qwck8xqtdtg" path="res://scenes/Building.tscn" id="9_yrjmu"]
 [ext_resource type="Script" path="res://scripts/buildingmesh.gd" id="10_2e4ll"]
+[ext_resource type="Texture2D" uid="uid://0u4nb7lbhy4a" path="res://textures/T_cracks35.png" id="10_iob8g"]
 [ext_resource type="Script" path="res://scenes/area_3d.gd" id="11_wocen"]
 [ext_resource type="VideoStream" path="res://Video/Bvid.ogv" id="12_6vs5d"]
 [ext_resource type="Texture2D" uid="uid://bfdayf8qqco4r" path="res://Video/Untitled design.jpg" id="13_726he"]
+<<<<<<< HEAD
 [ext_resource type="Shader" uid="uid://c4cxmi8f2d3sf" path="res://shaders/sparks2.tres" id="15_if0fa"]
 [ext_resource type="Texture2D" uid="uid://bg33txbf0mi23" path="res://textures/T_circle42.PNG" id="16_hl55h"]
 [ext_resource type="Texture2D" uid="uid://dw8jbyp386yjq" path="res://textures/fx_cloudalpha01.png" id="18_0m2ni"]
+=======
+[ext_resource type="PackedScene" uid="uid://cm40pdkohpoir" path="res://scenes/explosion.tscn" id="19_jhas1"]
+>>>>>>> 036cc16 ( particle systems)
 
 [sub_resource type="Curve3D" id="Curve3D_v0tjh"]
 _data = {
@@ -40,6 +51,17 @@ background_mode = 2
 sky = SubResource("Sky_g8ctf")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g11hh"]
+render_priority = 0
+shader = ExtResource("7_jaarg")
+shader_parameter/cloud_speed = Vector2(0, 0.7)
+shader_parameter/cloud_instensity = 0.2
+shader_parameter/disappearcloud = 0.566
+shader_parameter/explostion_color = Color(0.475848, 0.214537, 0.00806156, 1)
+shader_parameter/explosion_amount = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_e7ctn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2ig8"]
 size = Vector3(2.90942, 1, 0.795792)
@@ -113,6 +135,11 @@ environment = SubResource("Environment_1ejvd")
 
 [node name="MagnetArm" parent="Geometry" instance=ExtResource("3_r08op")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14001, -1.84856, 4.37579)
+<<<<<<< HEAD
+=======
+
+[node name="sparks" parent="Geometry/MagnetArm" instance=ExtResource("2_x1ye5")]
+>>>>>>> 036cc16 ( particle systems)
 
 [node name="PlayBin" parent="Geometry" instance=ExtResource("4_0rby3")]
 transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -1.949, 2.588)
@@ -148,6 +175,26 @@ script = ExtResource("6_ubdar")
 [node name="buildingmesh" parent="Geometry" instance=ExtResource("9_yrjmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52588e-05, -123.964, -100.146)
 script = ExtResource("10_2e4ll")
+
+[node name="Lavacloud_1" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, -0.121662, -0.992572, 0, 0.992572, -0.121662, -0.0991207, 0.181455, -3.59363)
+material_override = SubResource("ShaderMaterial_g11hh")
+mesh = SubResource("SphereMesh_e7ctn")
+
+[node name="Lavacloud_2" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 0.0875904, 0.996157, 0, -0.996157, 0.0875904, 3.14935, 0.181455, -4.55246)
+material_override = SubResource("ShaderMaterial_g11hh")
+mesh = SubResource("SphereMesh_e7ctn")
+
+[node name="Lavacloud_3" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, -0.121662, -0.992572, 0, 0.992572, -0.121662, -3.0757, 0.181455, -4.55246)
+material_override = SubResource("ShaderMaterial_g11hh")
+mesh = SubResource("SphereMesh_e7ctn")
+
+[node name="Decal" type="Decal" parent="Geometry"]
+transform = Transform3D(0.0366437, 0, 0.999328, 0, 1, 0, -0.999328, 0, 0.0366437, -0.0472212, -1.45545, 0.338004)
+size = Vector3(1.57129, 4.894, 3.10443)
+texture_albedo = ExtResource("10_iob8g")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.32687, 0)
@@ -279,6 +326,7 @@ size_flags_horizontal = 3
 text = "Restart "
 metadata/_edit_use_anchors_ = true
 
+<<<<<<< HEAD
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13692, -1.48015, 4.55331)
 material_override = SubResource("ShaderMaterial_n1dti")
@@ -291,6 +339,14 @@ draw_pass_1 = SubResource("QuadMesh_7hakh")
 [node name="Fog" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.759, -11.89, -20.37)
 mesh = SubResource("QuadMesh_83hpt")
+=======
+[node name="explosion" parent="UI" instance=ExtResource("19_jhas1")]
+transform = Transform3D(1, 0, 0, 0, 0.999963, -0.00862182, 0, 0.00862182, 0.999963, 0, -1.51291, 2.66332)
+emitting = false
+amount = 600
+lifetime = 4.62
+explosiveness = 1.0
+>>>>>>> 036cc16 ( particle systems)
 
 [connection signal="finished" from="UI/Splash/MarginContainer/Buttons/VideoStreamPlayer" to="UI/Splash/MarginContainer/Buttons/VideoStreamPlayer" method="_on_finished"]
 [connection signal="pressed" from="UI/Splash/MarginContainer/VBoxContainer/Start" to="Geometry/MagnetArm" method="_on_start_pressed"]
